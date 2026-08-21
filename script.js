@@ -1,7 +1,7 @@
 // Fundraising settings
 const GOAL = 2000;
 
-// Change this number as donations come in, or later connect it to your fundraising platform API.
+// Update this number as donations come in. We can automate this later if a usable fundraising-data source is available.
 const RAISED = 0;
 
 document.getElementById("raised").textContent = `$${RAISED.toLocaleString()}`;
