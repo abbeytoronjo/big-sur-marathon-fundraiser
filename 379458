@@ -1,0 +1,126 @@
+:root {
+  --ink: #16231f;
+  --muted: #63706b;
+  --paper: #f5f1e8;
+  --paper2: #ebe5d8;
+  --accent: #9b6a43;
+  --line: rgba(22,35,31,.18);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:"DM Sans",sans-serif; }
+a { color:inherit; }
+.hero { min-height:92vh; padding:28px 5vw 8vw; display:flex; flex-direction:column; justify-content:space-between; background:linear-gradient(90deg,rgba(12,24,21,.55) 0%,rgba(12,24,21,.18) 48%,rgba(12,24,21,.03) 100%), url("hero.jpg") center top/cover; color:white; }
+nav { display:flex; justify-content:space-between; align-items:center; }
+.wordmark,.nav-link,.eyebrow,.section-label { font-size:.72rem; letter-spacing:.14em; font-weight:700; }
+.nav-link { text-decoration:none; border-bottom:1px solid rgba(255,255,255,.65); padding-bottom:5px; }
+.hero-content { max-width:900px; padding-bottom:3vw; }
+.hero h1 { font-family:"Playfair Display",serif; font-size:clamp(3.5rem,8vw,8.5rem); line-height:.92; letter-spacing:-.05em; margin:18px 0 28px; }
+.hero h1 em { font-weight:500; }
+.intro { max-width:600px; font-size:1.15rem; line-height:1.6; }
+.button { display:inline-flex; gap:28px; align-items:center; background:white; color:var(--ink); padding:16px 21px; margin-top:18px; text-decoration:none; font-weight:700; font-size:.85rem; }
+.button.dark { background:var(--ink); color:white; }
+.section { padding:110px 8vw; border-bottom:1px solid var(--line); }
+.section-label { color:var(--muted); margin-bottom:55px; }
+.story-grid,.cause-card,.fundraising-grid,.race-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:8vw; }
+h2 { font-family:"Playfair Display",serif; font-size:clamp(2.4rem,5vw,5.5rem); line-height:.98; letter-spacing:-.04em; margin:0; }
+.body-copy { font-size:1.05rem; line-height:1.8; max-width:620px; }
+.cause { background:var(--paper2); }
+.cause-card { padding:60px; background:#f8f4eb; }
+.fundraising-grid { align-items:end; }
+.goal { font-family:"Playfair Display",serif; font-size:clamp(5rem,11vw,10rem); line-height:.9; letter-spacing:-.06em; margin:20px 0; }
+.muted { color:var(--muted); }
+.progress-wrap { padding-bottom:12px; }
+.progress { height:14px; background:rgba(22,35,31,.12); overflow:hidden; }
+.progress > div { height:100%; width:0%; background:var(--ink); transition:width .8s ease; }
+.progress-meta { display:flex; justify-content:space-between; margin-bottom:12px; font-size:.9rem; }
+.progress-meta.small { margin-top:12px; color:var(--muted); }
+.tiny { color:var(--muted); font-size:.72rem; line-height:1.5; }
+.training { background:var(--ink); color:white; }
+.training .section-label,.training .muted { color:#b9c1bc; }
+.training-head { display:flex; justify-content:space-between; gap:40px; align-items:end; }
+.text-link { font-weight:700; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.5); padding-bottom:6px; }
+.stats { display:grid; grid-template-columns:repeat(3,1fr); margin:70px 0 45px; border-top:1px solid rgba(255,255,255,.2); border-bottom:1px solid rgba(255,255,255,.2); }
+.stat { padding:35px 25px 35px 0; border-right:1px solid rgba(255,255,255,.2); }
+.stat:not(:first-child) { padding-left:25px; }
+.stat:last-child { border:0; }
+.stat strong { display:block; font-family:"Playfair Display",serif; font-size:clamp(2.5rem,5vw,5rem); }
+.stat span { color:#b9c1bc; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; }
+.strava-placeholder { border:1px solid rgba(255,255,255,.2); padding:40px; max-width:850px; }
+.strava-placeholder h3 { font-family:"Playfair Display",serif; font-size:2rem; margin:12px 0; }
+.race { background:#d9e1dc; }
+footer { display:flex; justify-content:space-between; padding:35px 5vw; font-size:.7rem; letter-spacing:.12em; font-weight:700; }
+footer a { text-decoration:none; }
+@media(max-width:700px){
+  .hero { min-height:85vh; padding:22px 6vw 12vw; }
+  .section { padding:75px 7vw; }
+  .story-grid,.cause-card,.fundraising-grid,.race-grid { grid-template-columns:1fr; gap:40px; }
+  .cause-card { padding:35px; }
+  .training-head { flex-direction:column; align-items:flex-start; }
+  .stats { grid-template-columns:1fr; }
+  .stat,.stat:not(:first-child) { border-right:0; border-bottom:1px solid rgba(255,255,255,.2); padding:25px 0; }
+  footer { flex-direction:column; gap:15px; }
+}
+
+
+/* Hero refinement */
+.hero { min-height:100vh; }
+.nav-links { display:flex; gap:28px; align-items:center; }
+.hero-content { max-width:620px; }
+.hero h1 { font-size:clamp(4rem,9.5vw,9.5rem); margin:16px 0 24px; }
+.hero-actions { display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
+.hero-text-link { color:white; text-decoration:none; font-size:.82rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,.55); padding-bottom:5px; }
+.hero-bottom { display:flex; justify-content:space-between; align-items:end; gap:30px; }
+.hero-number { display:block; font-family:"Playfair Display",serif; font-size:clamp(3.8rem,7vw,7rem); line-height:.85; letter-spacing:-.05em; }
+.hero-caption,.hero-raised span { display:block; margin-top:10px; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; font-weight:700; }
+.hero-raised { text-align:right; }
+.hero-raised strong { display:block; font-family:"Playfair Display",serif; font-size:2rem; font-weight:600; }
+@media(max-width:700px){
+  .nav-links { gap:15px; }
+  .hero-bottom { align-items:flex-start; }
+  .hero-raised { text-align:left; }
+  .hero-number { font-size:4.5rem; }
+}
+
+@media (min-width: 1000px) {
+  .hero-content { max-width: 620px; }
+  .hero h1 { max-width: 620px; }
+  .hero .intro { max-width: 520px; }
+}
+@media (max-width: 999px) {
+  .hero-content { max-width: 100%; }
+}
+
+/* Keep hero typography entirely in the left-side negative space. */
+@media (min-width: 1000px) {
+  .hero-content {
+    width: min(44vw, 500px);
+    max-width: 500px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.6rem, 5.6vw, 6rem);
+    line-height: .92;
+    max-width: 480px;
+  }
+
+  .hero .intro {
+    max-width: 390px;
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 999px) {
+  .hero-content {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.2rem, 9vw, 5.5rem);
+  }
+}
