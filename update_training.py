@@ -79,6 +79,9 @@ for item in items:
             "title": title,
             "distance": distance,
         })
+        
+print(f"Found {len(items)} RSS activity items")
+print(f"Parsed {len(activities)} activities since {START_DATE}")
 
 # Sort newest first.
 activities.sort(key=lambda x: x["date"], reverse=True)
