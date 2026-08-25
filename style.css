@@ -82,9 +82,9 @@ footer a { text-decoration: none; }
 
 @media (max-width: 700px) {
   .hero { min-height: 100svh; padding: 64px 6vw 10vw; background-position: center 20%; }
-  .hero::before { content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027"; position: absolute; top: 0; left: 0; right: 0; z-index: 10; height: 42px; display: flex; align-items: center; justify-content: center; background: var(--ink); color: white; font-size: .58rem; font-weight: 700; letter-spacing: .07em; white-space: nowrap; }
+  .hero::before { content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027"; position: absolute; top: 0; left: 0; z-index: 10; height: 42px; width: 100%; display: flex; align-items: center; justify-content: center; background: var(--ink); color: white; font-size: .58rem; font-weight: 700; letter-spacing: .07em; white-space: nowrap; }
   nav { gap: 0; }
-  .nav-eyebrow { display: none; }
+  .nav-eyebrow, .nav-links { display: none; }
   .hero-content { display: block !important; max-width: 100%; text-align: left; margin-top: auto; margin-bottom: auto; padding-bottom: 0; position: static; }
   .hero-content .eyebrow, .hero-content .intro { display: none; }
   .hero h1 { text-align: left; font-size: clamp(3.6rem,15vw,5.2rem); line-height: .91; margin: 0; }
