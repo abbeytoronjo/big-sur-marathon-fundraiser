@@ -24,7 +24,7 @@ activities = []
 
 for item in root.findall(".//item"):
     title = item.findtext("title", "")
-       content = item.findtext(
+    content = item.findtext(
         "{http://purl.org/rss/1.0/modules/content/}encoded",
         ""
     )
@@ -44,7 +44,7 @@ for item in root.findall(".//item"):
     if activity_date.isoformat() < START_DATE:
         continue
 
-       # RUNALYZE puts the distance inside content:encoded.
+    # RUNALYZE puts the distance inside content:encoded.
     distance = None
 
     match = re.search(
