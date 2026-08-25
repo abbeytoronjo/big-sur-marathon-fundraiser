@@ -27,14 +27,13 @@ a {
 }
 
 
-/* =========================================
-   HERO
-========================================= */
+/* ================================
+   HERO — ORIGINAL DESKTOP
+================================ */
 
 .hero {
-  min-height: 100vh;
-  position: relative;
-  padding: 28px 5vw 6vw;
+  min-height: 92vh;
+  padding: 28px 5vw 8vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -79,20 +78,16 @@ nav {
 }
 
 .hero-content {
-  max-width: 620px;
-  padding-bottom: 0;
-  margin-top: auto;
-  margin-bottom: auto;
-  position: relative;
-  z-index: 2;
+  max-width: 900px;
+  padding-bottom: 3vw;
 }
 
 .hero h1 {
   font-family: "Playfair Display", serif;
-  font-size: clamp(4rem, 8vw, 8.5rem);
+  font-size: clamp(3.5rem, 8vw, 8.5rem);
   line-height: .92;
   letter-spacing: -.05em;
-  margin: 16px 0 28px;
+  margin: 18px 0 28px;
 }
 
 .hero h1 em {
@@ -161,7 +156,7 @@ nav {
 .hero-caption,
 .hero-raised span {
   display: block;
-  margin-top: 18px;
+  margin-top: 24px;
   font-size: .7rem;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -180,18 +175,9 @@ nav {
 }
 
 
-/* =========================================
-   MOBILE HERO CONTENT
-========================================= */
-
-.mobile-hero-content {
-  display: none;
-}
-
-
-/* =========================================
+/* ================================
    GENERAL SECTIONS
-========================================= */
+================================ */
 
 .section {
   padding: 110px 8vw;
@@ -227,9 +213,9 @@ h2 {
 }
 
 
-/* =========================================
+/* ================================
    CAUSE
-========================================= */
+================================ */
 
 .cause {
   background: var(--paper2);
@@ -241,9 +227,9 @@ h2 {
 }
 
 
-/* =========================================
+/* ================================
    FUNDRAISING
-========================================= */
+================================ */
 
 .fundraising-grid {
   align-items: end;
@@ -297,9 +283,9 @@ h2 {
 }
 
 
-/* =========================================
+/* ================================
    TRAINING
-========================================= */
+================================ */
 
 .training {
   background: var(--ink);
@@ -327,7 +313,7 @@ h2 {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
   margin: 70px 0 45px;
   border-top: 1px solid rgba(255,255,255,.2);
   border-bottom: 1px solid rgba(255,255,255,.2);
@@ -349,15 +335,13 @@ h2 {
 .stat strong {
   display: block;
   font-family: "Playfair Display", serif;
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  line-height: .95;
-  margin-bottom: 12px;
+  font-size: clamp(2.5rem,5vw,5rem);
 }
 
 .stat span {
   color: #b9c1bc;
   font-size: .8rem;
-  letter-spacing: .08em;
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
 
@@ -374,18 +358,18 @@ h2 {
 }
 
 
-/* =========================================
+/* ================================
    RACE
-========================================= */
+================================ */
 
 .race {
   background: #d9e1dc;
 }
 
 
-/* =========================================
+/* ================================
    FOOTER
-========================================= */
+================================ */
 
 footer {
   display: flex;
@@ -401,29 +385,28 @@ footer a {
 }
 
 
-/* =========================================
+/* ================================
    MOBILE
-========================================= */
+================================ */
 
 @media (max-width: 700px) {
 
-  /* -----------------------------------------
-     HERO
-  ----------------------------------------- */
+  /* Keep desktop hero untouched */
 
   .hero {
     min-height: 100svh;
-    padding: 64px 6vw 9vw;
+    padding: 64px 6vw 10vw;
 
     /*
-      Keep the desktop image behavior,
-      but move the mobile crop slightly down
-      so there is more room above your head.
+      Mobile-only crop adjustment.
+      Start here; we can fine-tune this after
+      seeing the result.
     */
     background-position: center 20%;
   }
 
-  /* Small marathon information strip above photo */
+  /* Move the long Big Sur/date eyebrow
+     above the photograph */
 
   .hero::before {
     content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027";
@@ -446,45 +429,33 @@ footer a {
 
     font-size: .58rem;
     font-weight: 700;
-    letter-spacing: .08em;
+    letter-spacing: .07em;
 
     white-space: nowrap;
   }
 
-  /* Hide desktop hero content */
+  /* Make the mobile hero less text-heavy */
 
   .hero-content {
-    display: none;
-  }
-
-  /* Mobile headline */
-
-  .mobile-hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    position: relative;
-    z-index: 2;
-
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-
-  .mobile-hero-content h1 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(3.6rem, 15vw, 5.2rem);
-    line-height: .91;
-    letter-spacing: -.05em;
-    margin: 0;
     max-width: 100%;
   }
 
-  .mobile-hero-content h1 em {
-    font-weight: 500;
+  .hero-content .eyebrow {
+    display: none;
   }
 
-  /* Hide fundraising goal from mobile hero */
+  .hero-content .intro,
+  .hero-actions {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.6rem, 15vw, 5.2rem);
+    line-height: .91;
+    margin: 0;
+  }
+
+  /* Remove fundraising goal from hero */
 
   .hero-raised {
     display: none;
@@ -503,17 +474,10 @@ footer a {
   }
 
 
-  /* -----------------------------------------
-     GENERAL MOBILE SECTIONS
-  ----------------------------------------- */
+  /* General mobile sections */
 
   .section {
-    padding: 65px 7vw;
-  }
-
-  .section-label {
-    margin-bottom: 32px;
-    font-size: .64rem;
+    padding: 75px 7vw;
   }
 
   .story-grid,
@@ -521,89 +485,20 @@ footer a {
   .fundraising-grid,
   .race-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 40px;
   }
-
-  h2 {
-    font-size: clamp(2.5rem, 11vw, 4rem);
-    line-height: 1;
-  }
-
-  .body-copy {
-    font-size: .96rem;
-    line-height: 1.65;
-  }
-
-
-  /* -----------------------------------------
-     NAVIGATION
-  ----------------------------------------- */
-
-  .wordmark,
-  .nav-link,
-  .eyebrow {
-    font-size: .64rem;
-  }
-
-  .nav-links {
-    gap: 15px;
-  }
-
-
-  /* -----------------------------------------
-     STORY
-  ----------------------------------------- */
-
-  .story-grid {
-    gap: 24px;
-  }
-
-
-  /* -----------------------------------------
-     CAUSE
-  ----------------------------------------- */
 
   .cause-card {
-    padding: 28px;
-    gap: 22px;
+    padding: 35px;
   }
-
-
-  /* -----------------------------------------
-     FUNDRAISING
-  ----------------------------------------- */
-
-  .goal {
-    font-size: 5.5rem;
-    margin: 10px 0 18px;
-  }
-
-  .fundraising .muted {
-    margin-bottom: 22px;
-  }
-
-  .progress-wrap {
-    padding-bottom: 0;
-  }
-
-
-  /* -----------------------------------------
-     TRAINING
-  ----------------------------------------- */
 
   .training-head {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-  }
-
-  .training-head h2 {
-    max-width: 320px;
   }
 
   .stats {
     grid-template-columns: 1fr;
-    margin: 45px 0 35px;
   }
 
   .stat,
@@ -613,52 +508,8 @@ footer a {
     padding: 25px 0;
   }
 
-  .stat:last-child {
-    border-bottom: 0;
-  }
-
-  .stat strong {
-    font-size: 3.5rem;
-    margin-bottom: 8px;
-  }
-
-  .stat span {
-    font-size: .68rem;
-    letter-spacing: .07em;
-  }
-
-  .strava-placeholder {
-    padding: 28px;
-  }
-
-  .strava-placeholder h3 {
-    font-size: 1.8rem;
-    line-height: 1.05;
-  }
-
-  .strava-placeholder p:not(.eyebrow) {
-    font-size: .9rem;
-    line-height: 1.6;
-  }
-
-
-  /* -----------------------------------------
-     RACE
-  ----------------------------------------- */
-
-  .race-grid {
-    gap: 24px;
-  }
-
-
-  /* -----------------------------------------
-     FOOTER
-  ----------------------------------------- */
-
   footer {
     flex-direction: column;
-    gap: 14px;
-    padding: 28px 7vw;
-    line-height: 1.5;
+    gap: 15px;
   }
 }
