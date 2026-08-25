@@ -27,9 +27,9 @@ a {
 }
 
 
-/* ================================
-   HERO — ORIGINAL DESKTOP
-================================ */
+/* ========================================
+   HERO
+======================================== */
 
 .hero {
   min-height: 92vh;
@@ -77,10 +77,23 @@ nav {
   padding-bottom: 5px;
 }
 
+
+/* Hero content alignment */
+
 .hero-content {
   max-width: 900px;
   padding-bottom: 3vw;
+  text-align: left;
 }
+
+/* Eyebrow stays centered */
+
+.hero-content .eyebrow {
+  text-align: center;
+}
+
+
+/* Main headline */
 
 .hero h1 {
   font-family: "Playfair Display", serif;
@@ -88,19 +101,26 @@ nav {
   line-height: .92;
   letter-spacing: -.05em;
   margin: 18px 0 28px;
+  text-align: left;
 }
 
 .hero h1 em {
   font-weight: 500;
-  display: inline-block;
-  margin-left: -0.04em;
+  margin: 0;
+  padding: 0;
 }
+
+
+/* Intro */
 
 .intro {
   max-width: 600px;
   font-size: 1.15rem;
   line-height: 1.6;
 }
+
+
+/* Hero buttons */
 
 .hero-actions {
   display: flex;
@@ -137,6 +157,9 @@ nav {
   border-bottom: 1px solid rgba(255,255,255,.55);
   padding-bottom: 5px;
 }
+
+
+/* Hero bottom */
 
 .hero-bottom {
   display: flex;
@@ -177,9 +200,9 @@ nav {
 }
 
 
-/* ================================
+/* ========================================
    GENERAL SECTIONS
-================================ */
+======================================== */
 
 .section {
   padding: 110px 8vw;
@@ -215,9 +238,9 @@ h2 {
 }
 
 
-/* ================================
+/* ========================================
    CAUSE
-================================ */
+======================================== */
 
 .cause {
   background: var(--paper2);
@@ -229,9 +252,9 @@ h2 {
 }
 
 
-/* ================================
+/* ========================================
    FUNDRAISING
-================================ */
+======================================== */
 
 .fundraising-grid {
   align-items: end;
@@ -285,9 +308,9 @@ h2 {
 }
 
 
-/* ================================
+/* ========================================
    TRAINING
-================================ */
+======================================== */
 
 .training {
   background: var(--ink);
@@ -315,7 +338,7 @@ h2 {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin: 70px 0 45px;
   border-top: 1px solid rgba(255,255,255,.2);
   border-bottom: 1px solid rgba(255,255,255,.2);
@@ -337,7 +360,7 @@ h2 {
 .stat strong {
   display: block;
   font-family: "Playfair Display", serif;
-  font-size: clamp(2.5rem,5vw,5rem);
+  font-size: clamp(2.5rem, 5vw, 5rem);
 }
 
 .stat span {
@@ -360,18 +383,18 @@ h2 {
 }
 
 
-/* ================================
+/* ========================================
    RACE
-================================ */
+======================================== */
 
 .race {
   background: #d9e1dc;
 }
 
 
-/* ================================
+/* ========================================
    FOOTER
-================================ */
+======================================== */
 
 footer {
   display: flex;
@@ -387,28 +410,21 @@ footer a {
 }
 
 
-/* ================================
+/* ========================================
    MOBILE
-================================ */
+======================================== */
 
 @media (max-width: 700px) {
-
-  /* Keep desktop hero untouched */
 
   .hero {
     min-height: 100svh;
     padding: 64px 6vw 10vw;
 
-    /*
-      Mobile-only crop adjustment.
-      Start here; we can fine-tune this after
-      seeing the result.
-    */
     background-position: center 20%;
   }
 
-  /* Move the long Big Sur/date eyebrow
-     above the photograph */
+
+  /* Mobile eyebrow bar */
 
   .hero::before {
     content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027";
@@ -436,14 +452,31 @@ footer a {
     white-space: nowrap;
   }
 
-  /* Make the mobile hero less text-heavy */
 
-  .hero-content {
-    max-width: 100%;
-  }
+  /* Hide the duplicate eyebrow inside the image */
 
   .hero-content .eyebrow {
     display: none;
+  }
+
+
+  /* Simplify mobile hero */
+
+  .hero-content {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .hero h1 {
+    text-align: left;
+    font-size: clamp(3.6rem, 15vw, 5.2rem);
+    line-height: .91;
+    margin: 0;
+  }
+
+  .hero h1 em {
+    margin: 0;
+    padding: 0;
   }
 
   .hero-content .intro,
@@ -451,20 +484,19 @@ footer a {
     display: none;
   }
 
-  .hero h1 {
-    font-size: clamp(3.6rem, 15vw, 5.2rem);
-    line-height: .91;
-    margin: 0;
-  }
 
-  /* Remove fundraising goal from hero */
+  /* Hide fundraising goal on mobile */
 
   .hero-raised {
     display: none;
   }
 
+
+  /* Countdown */
+
   .hero-bottom {
     justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .hero-number {
@@ -494,6 +526,9 @@ footer a {
     padding: 35px;
   }
 
+
+  /* Training */
+
   .training-head {
     flex-direction: column;
     align-items: flex-start;
@@ -509,6 +544,9 @@ footer a {
     border-bottom: 1px solid rgba(255,255,255,.2);
     padding: 25px 0;
   }
+
+
+  /* Footer */
 
   footer {
     flex-direction: column;
