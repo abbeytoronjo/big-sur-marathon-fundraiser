@@ -43,13 +43,16 @@ nav { display: flex; justify-content: space-between; align-items: center; }
   z-index: 2;
 }
 
-/* Keep the eyebrow centered, but lift it above the portrait/headline area. */
+/* Keep the eyebrow centered on the page and aligned horizontally with
+   the name and Donate/Training navigation at the top of the hero. */
 .hero-content .eyebrow {
   text-align: center;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: -88px;
+  top: -82px;
+  left: 50%;
+  right: auto;
+  width: 100vw;
+  transform: translateX(-50%);
   margin: 0;
 }
 
