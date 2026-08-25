@@ -570,94 +570,124 @@ footer a {
 
   .hero {
     min-height: 100svh;
+
     padding: 64px 6vw 10vw;
+
     background-position: center 20%;
   }
 
-  /* Date above the hero image */
+
+  /* Mobile Big Sur/date bar */
+
   .hero::before {
     content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027";
+
     position: absolute;
+
     top: 0;
     left: 0;
     right: 0;
+
     z-index: 10;
 
     height: 42px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     background: var(--ink);
+
     color: white;
 
     font-size: .58rem;
+
     font-weight: 700;
+
     letter-spacing: .07em;
 
     white-space: nowrap;
   }
 
-  /* Hide the eyebrow from the photo */
+
+  /* Hide desktop eyebrow */
+
   .hero-content .eyebrow {
     display: none;
   }
 
-  /* Keep the original hero positioning */
+
+  /* Mobile hero content */
+
   .hero-content {
     max-width: 100%;
+
     text-align: left;
+
     margin-top: auto;
     margin-bottom: auto;
   }
 
-  /* Keep your headline exactly as it is */
+
   .hero h1 {
     text-align: left;
+
+    font-size: clamp(3.6rem,15vw,5.2rem);
+
+    line-height: .91;
+
+    margin: 0;
   }
 
-  /* Hide intro on mobile */
+  .hero h1 em {
+    margin: 0;
+    padding: 0;
+  }
+
+
+  /* Keep mobile hero clean */
+
   .hero-content .intro {
     display: none;
   }
 
-  /* Buttons: plain text on mobile */
+
+  /* Stack hero buttons */
+
   .hero-actions {
-    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    width: 100%;
+
     margin-top: 25px;
   }
 
   .hero-actions .button,
   .hero-actions .hero-text-link {
-    display: inline-block;
+    width: 100%;
 
-    width: auto;
-    height: auto;
-    min-height: 0;
+    height: 50px;
 
-    margin: 0;
-    padding: 0 0 5px;
+    justify-content: center;
 
-    background: transparent;
-    color: white;
-
-    border: 0;
-    border-bottom: 1px solid rgba(255,255,255,.7);
-
-    box-shadow: none;
-
-    text-decoration: none;
+    margin-top: 0;
   }
+
 
   /* Hero bottom */
+
   .hero-bottom {
     justify-content: flex-start;
+
     align-items: flex-start;
   }
+
 
   .hero-raised {
     display: none;
@@ -671,7 +701,9 @@ footer a {
     margin-top: 14px;
   }
 
-  /* Other mobile sections */
+
+  /* General sections */
+
   .section {
     padding: 75px 7vw;
   }
@@ -681,6 +713,7 @@ footer a {
   .fundraising-grid,
   .race-grid {
     grid-template-columns: 1fr;
+
     gap: 40px;
   }
 
@@ -688,8 +721,12 @@ footer a {
     padding: 35px;
   }
 
+
+  /* Training */
+
   .training-head {
     flex-direction: column;
+
     align-items: flex-start;
   }
 
@@ -700,62 +737,55 @@ footer a {
   .stat,
   .stat:not(:first-child) {
     border-right: 0;
+
     border-bottom: 1px solid rgba(255,255,255,.2);
+
     padding: 25px 0;
   }
 
+
+  /* Footer */
+
   footer {
     flex-direction: column;
+
     gap: 15px;
   }
 }
 @media (max-width: 700px) {
 
-  .hero-donate,
-  .hero-training {
-    background: transparent !important;
-    color: white !important;
-    border: none !important;
-    box-shadow: none !important;
-
-    width: auto !important;
-    height: auto !important;
-    min-height: 0 !important;
-
-    margin: 0 !important;
-    padding: 0 0 5px !important;
-
-    display: inline-block !important;
-
-    text-decoration: none !important;
+  /* Restore the original mobile hero positioning */
+  .hero-content {
+    max-width: 100%;
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
-  .hero-donate {
-    border-bottom: 1px solid rgba(255,255,255,.7) !important;
-  }
-
-  .hero-training {
-    border-bottom: 1px solid rgba(255,255,255,.7) !important;
-  }
-
+  /* Remove button boxes on mobile */
   .hero-actions {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 14px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    width: auto;
   }
-}
-/* Restore desktop fundraising layout */
-.fundraising-grid {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 8vw;
-  align-items: end;
-}
 
-@media (max-width: 700px) {
-  .fundraising-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .hero-actions .button,
+  .hero-actions .hero-text-link {
+    width: auto;
+    height: auto;
+    min-height: 0;
+    padding: 0 0 5px;
+    margin: 0;
+
+    background: transparent;
+    color: white;
+
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.7);
+
+    box-shadow: none;
   }
+
 }
