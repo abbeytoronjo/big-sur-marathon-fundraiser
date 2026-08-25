@@ -22,22 +22,15 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* =========================================
-       MOBILE HERO
-    ========================================= */
-
     .mobile-hero-content {
       display: none;
     }
 
     @media (max-width: 700px) {
-
-      /* Hide the full desktop hero content on mobile */
       .hero-content {
         display: none;
       }
 
-      /* Simplified mobile hero headline */
       .mobile-hero-content {
         display: flex;
         flex-direction: column;
@@ -49,7 +42,6 @@
         padding: 0;
       }
 
-      /* The long marathon eyebrow is moved above the image */
       .mobile-hero-content .eyebrow {
         display: none;
       }
@@ -67,14 +59,12 @@
         font-weight: 500;
       }
 
-      /* Keep the hero image clean */
       .hero {
         min-height: 100svh;
         padding: 64px 6vw 9vw;
         background-position: center top;
       }
 
-      /* Marathon information strip above the photo */
       .hero::before {
         content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027";
         position: absolute;
@@ -83,22 +73,17 @@
         right: 0;
         z-index: 10;
         height: 42px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: var(--ink);
         color: white;
-
         font-size: .58rem;
         font-weight: 700;
         letter-spacing: .08em;
-
         white-space: nowrap;
       }
 
-      /* Hide fundraising goal from mobile hero */
       .hero-raised {
         display: none;
       }
@@ -122,20 +107,15 @@
 
   <main>
 
-    <!-- =========================================
-         HERO
-    ========================================= -->
-
+    <!-- HERO -->
     <section class="hero">
 
       <nav>
-
         <div class="wordmark">
           ABBEY TORONJO
         </div>
 
         <div class="nav-links">
-
           <a
             class="nav-link"
             href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533"
@@ -145,20 +125,13 @@
             DONATE
           </a>
 
-          <a
-            class="nav-link"
-            href="#training"
-          >
+          <a class="nav-link" href="#training">
             TRAINING
           </a>
-
         </div>
-
       </nav>
 
-
       <!-- DESKTOP HERO -->
-
       <div class="hero-content">
 
         <p class="eyebrow">
@@ -176,60 +149,46 @@
         </p>
 
         <div class="hero-actions">
+          <a
+            class="button hero-donate"
+            href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533"
+            target="_blank"
+            rel="noopener"
+          >
+            Donate <span>→</span>
+          </a>
 
-  <a
-    class="button hero-donate"
-    href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533"
-    target="_blank"
-    rel="noopener"
-  >
-    Donate <span>→</span>
-  </a>
+          <a
+            class="hero-text-link hero-training"
+            href="#training"
+          >
+            Follow my training ↓
+          </a>
+        </div>
 
-  <a
-    class="hero-text-link hero-training"
-    href="#training"
-  >
-    Follow my training ↓
-  </a>
-
-</div>
-
+      </div>
 
       <!-- MOBILE HERO -->
-
       <div class="mobile-hero-content">
-
         <h1>
           Running for<br>
           <em>Girls on the Run.</em>
         </h1>
-
       </div>
 
-
       <!-- HERO BOTTOM -->
-
       <div class="hero-bottom">
-
         <div>
-
-          <span
-            class="hero-number"
-            id="countdown-days"
-          >
+          <span class="hero-number" id="countdown-days">
             —
           </span>
 
           <span class="hero-caption">
             days until race day
           </span>
-
         </div>
 
-
         <div class="hero-raised">
-
           <strong>
             $2,000
           </strong>
@@ -237,32 +196,23 @@
           <span>
             fundraising goal
           </span>
-
         </div>
-
       </div>
 
     </section>
 
-
-    <!-- =========================================
-         WHY I'M RUNNING
-    ========================================= -->
-
+    <!-- WHY I'M RUNNING -->
     <section class="story section">
-
       <div class="section-label">
         01 — WHY I'M RUNNING
       </div>
 
       <div class="story-grid">
-
         <h2>
           Running has been part of my life for as long as I can remember.
         </h2>
 
         <div class="body-copy">
-
           <p>
             Running has been part of my life from a young age, all the way
             through college as an NCAA Division I cross country and track
@@ -276,28 +226,18 @@
             through the joy of running. This marathon is an opportunity to
             give back to a sport that has given me so much.
           </p>
-
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- =========================================
-         THE CAUSE
-    ========================================= -->
-
+    <!-- THE CAUSE -->
     <section class="cause section">
-
       <div class="section-label">
         02 — THE CAUSE
       </div>
 
       <div class="cause-card">
-
         <div>
-
           <p class="eyebrow">
             GIRLS ON THE RUN CENTRAL COAST
           </p>
@@ -305,7 +245,6 @@
           <h2>
             Helping girls discover the joy of running.
           </h2>
-
         </div>
 
         <p class="body-copy">
@@ -313,29 +252,17 @@
           build confidence, develop life skills, and create a strong sense
           of community.
         </p>
-
       </div>
-
     </section>
 
-
-    <!-- =========================================
-         FUNDRAISING
-    ========================================= -->
-
-    <section
-      class="fundraising section"
-      id="donate"
-    >
-
+    <!-- FUNDRAISING -->
+    <section class="fundraising section" id="donate">
       <div class="section-label">
         03 — THE GOAL
       </div>
 
       <div class="fundraising-grid">
-
         <div>
-
           <p class="eyebrow">
             MY FUNDRAISING GOAL
           </p>
@@ -357,71 +284,39 @@
           >
             Donate now <span>↗</span>
           </a>
-
         </div>
 
-
         <div class="progress-wrap">
-
           <div class="progress-meta">
-
-            <span>
-              Raised
-            </span>
-
-            <strong id="raised">
-              $0
-            </strong>
-
+            <span>Raised</span>
+            <strong id="raised">$0</strong>
           </div>
 
           <div class="progress">
-
             <div id="progress-bar"></div>
-
           </div>
 
           <div class="progress-meta small">
-
-            <span>
-              Goal
-            </span>
-
-            <span>
-              $2,000
-            </span>
-
+            <span>Goal</span>
+            <span>$2,000</span>
           </div>
 
           <p class="tiny">
             Your donation goes directly through my official Girls on the Run
             Central Coast fundraising page.
           </p>
-
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- =========================================
-         TRAINING
-    ========================================= -->
-
-    <section
-      class="training section"
-      id="training"
-    >
-
+    <!-- TRAINING -->
+    <section class="training section" id="training">
       <div class="section-label">
         04 — FOLLOW THE TRAINING
       </div>
 
       <div class="training-head">
-
         <div>
-
           <p class="eyebrow">
             FOLLOW MY TRAINING
           </p>
@@ -429,7 +324,6 @@
           <h2>
             The road to Big Sur.
           </h2>
-
         </div>
 
         <a
@@ -440,55 +334,26 @@
         >
           View my live training ↗
         </a>
-
       </div>
-
 
       <div class="stats">
-
         <div class="stat">
-
-          <strong id="total-miles">
-            —
-          </strong>
-
-          <span>
-            Miles logged: since Aug. 1
-          </span>
-
+          <strong id="total-miles">—</strong>
+          <span>Miles logged: since Aug. 1</span>
         </div>
 
-
         <div class="stat">
-
-          <strong id="run-count">
-            —
-          </strong>
-
-          <span>
-            Runs since: Aug. 1
-          </span>
-
+          <strong id="run-count">—</strong>
+          <span>Runs since: Aug. 1</span>
         </div>
 
-
         <div class="stat">
-
-          <strong id="last-run">
-            —
-          </strong>
-
-          <span>
-            Latest run: <span id="last-run-date">—</span>
-          </span>
-
+          <strong id="last-run">—</strong>
+          <span>Latest run: <span id="last-run-date">—</span></span>
         </div>
-
       </div>
 
-
       <div class="strava-placeholder">
-
         <p class="eyebrow">
           GARMIN → RUNALYZE
         </p>
@@ -510,26 +375,17 @@
         >
           See my latest training ↗
         </a>
-
       </div>
-
     </section>
 
-
-    <!-- =========================================
-         BIG SUR
-    ========================================= -->
-
+    <!-- BIG SUR -->
     <section class="race section">
-
       <div class="section-label">
         05 — BIG SUR
       </div>
 
       <div class="race-grid">
-
         <div>
-
           <p class="eyebrow">
             APRIL 25, 2027
           </p>
@@ -537,7 +393,6 @@
           <h2>
             26.2 miles along the California coast.
           </h2>
-
         </div>
 
         <p class="body-copy">
@@ -545,24 +400,16 @@
           spectacular Big Sur coastline. This is the finish line I'm
           working toward.
         </p>
-
       </div>
-
     </section>
 
-
-    <!-- =========================================
-         FOOTER
-    ========================================= -->
-
+    <!-- FOOTER -->
     <footer>
-
       <div>
         ABBEY RUNS BIG SUR · 2027
       </div>
 
       <div>
-
         <a
           href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533"
           target="_blank"
@@ -570,9 +417,7 @@
         >
           DONATE
         </a>
-
         ·
-
         <a
           href="https://www.strava.com/athletes/74266611"
           target="_blank"
@@ -580,13 +425,10 @@
         >
           STRAVA
         </a>
-
       </div>
-
     </footer>
 
   </main>
-
 
   <script src="script.js"></script>
 
