@@ -27,7 +27,19 @@ a { color: inherit; }
 
 nav { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
 .wordmark, .nav-link, .eyebrow, .section-label, .nav-eyebrow { font-size: .72rem; letter-spacing: .14em; font-weight: 700; }
-.nav-eyebrow { margin: 0; text-align: center; flex: 1; white-space: nowrap; }
+.nav-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 18px;
+  margin: 0;
+  background: var(--ink);
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1;
+}
 .nav-links { display: flex; gap: 10px; align-items: center; }
 .nav-link {
   display: inline-flex; align-items: center; justify-content: center;
@@ -36,14 +48,7 @@ nav { display: flex; justify-content: space-between; align-items: center; gap: 3
   box-shadow: 0 6px 18px rgba(0,0,0,.12);
 }
 
-.hero-content {
-  max-width: 900px;
-  padding-bottom: 3vw;
-  text-align: left;
-  position: relative;
-  z-index: 2;
-}
-
+.hero-content { max-width: 900px; padding-bottom: 3vw; text-align: left; position: relative; z-index: 2; }
 .hero-content .eyebrow { text-align: center; }
 .hero h1 {
   font-family: "Playfair Display", serif;
@@ -71,32 +76,16 @@ nav { display: flex; justify-content: space-between; align-items: center; gap: 3
   font-weight: 700; font-size: .85rem; border: 0; box-shadow: 0 8px 24px rgba(0,0,0,.16);
 }
 
-.hero-bottom {
-  display: flex; justify-content: space-between; align-items: end; gap: 30px;
-  position: relative; z-index: 2;
-}
-.hero-number {
-  display: block; font-family: "Playfair Display", serif; font-size: clamp(3.8rem, 7vw, 7rem);
-  line-height: .85; letter-spacing: -.05em;
-}
-.hero-caption, .hero-raised span {
-  display: block; margin-top: 24px; font-size: .7rem; letter-spacing: .12em;
-  text-transform: uppercase; font-weight: 700;
-}
-.hero-raised {
-  text-align: center; padding: 18px 22px; background: rgba(12,24,21,.42);
-  border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-}
-.hero-raised strong {
-  display: block; font-family: "Playfair Display", serif; font-size: 2rem; font-weight: 600; text-align: center;
-}
+.hero-bottom { display: flex; justify-content: space-between; align-items: end; gap: 30px; position: relative; z-index: 2; }
+.hero-number { display: block; font-family: "Playfair Display", serif; font-size: clamp(3.8rem, 7vw, 7rem); line-height: .85; letter-spacing: -.05em; }
+.hero-caption, .hero-raised span { display: block; margin-top: 24px; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+.hero-raised { text-align: center; padding: 18px 22px; background: rgba(12,24,21,.42); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+.hero-raised strong { display: block; font-family: "Playfair Display", serif; font-size: 2rem; font-weight: 600; text-align: center; }
 .hero-raised span { text-align: center; }
 
 .section { padding: 110px 8vw; border-bottom: 1px solid var(--line); }
 .section-label { color: var(--muted); margin-bottom: 55px; }
-.story-grid, .cause-card, .fundraising-grid, .race-grid {
-  display: grid; grid-template-columns: 1.1fr .9fr; gap: 8vw;
-}
+.story-grid, .cause-card, .fundraising-grid, .race-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 8vw; }
 h2 { font-family: "Playfair Display", serif; font-size: clamp(2.4rem, 5vw, 5.5rem); line-height: .98; letter-spacing: -.04em; margin: 0; }
 .body-copy { font-size: 1.05rem; line-height: 1.8; max-width: 620px; }
 .cause { background: var(--paper2); }
@@ -128,26 +117,15 @@ footer a { text-decoration: none; }
 
 @media (max-width: 700px) {
   .hero { min-height: 100svh; padding: 64px 6vw 10vw; background-position: center 20%; }
-  .hero::before {
-    content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027";
-    position: absolute; top: 0; left: 0; right: 0; z-index: 10; height: 42px;
-    display: flex; align-items: center; justify-content: center; background: var(--ink); color: white;
-    font-size: .58rem; font-weight: 700; letter-spacing: .07em; white-space: nowrap;
-  }
+  .hero::before { content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027"; position: absolute; top: 0; left: 0; right: 0; z-index: 10; height: 42px; display: flex; align-items: center; justify-content: center; background: var(--ink); color: white; font-size: .58rem; font-weight: 700; letter-spacing: .07em; white-space: nowrap; }
   nav { gap: 0; }
   .nav-eyebrow { display: none; }
   .hero-content { display: block !important; max-width: 100%; text-align: left; margin-top: auto; margin-bottom: auto; padding-bottom: 0; position: static; }
   .hero-content .eyebrow, .hero-content .intro { display: none; }
   .hero h1 { text-align: left; font-size: clamp(3.6rem,15vw,5.2rem); line-height: .91; margin: 0; }
   .hero h1 em { margin: 0; padding: 0; }
-  .hero-actions {
-    position: absolute; right: 6vw; bottom: 10vw; z-index: 4; display: flex; flex-direction: column;
-    align-items: flex-end; gap: 10px; width: auto; margin: 0;
-  }
-  .hero-actions .button, .hero-actions .hero-text-link {
-    width: auto; height: auto; min-height: 0; padding: 0; margin: 0; gap: 8px; background: transparent;
-    color: white; border: 0; border-bottom: 1px solid rgba(255,255,255,.75); box-shadow: none; white-space: nowrap;
-  }
+  .hero-actions { position: absolute; right: 6vw; bottom: 10vw; z-index: 4; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; width: auto; margin: 0; }
+  .hero-actions .button, .hero-actions .hero-text-link { width: auto; height: auto; min-height: 0; padding: 0; margin: 0; gap: 8px; background: transparent; color: white; border: 0; border-bottom: 1px solid rgba(255,255,255,.75); box-shadow: none; white-space: nowrap; }
   .hero-bottom { justify-content: flex-start; align-items: flex-start; }
   .hero-raised { display: none; }
   .hero-number { font-size: 4.5rem; }
