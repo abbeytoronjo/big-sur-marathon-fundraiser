@@ -745,3 +745,17 @@ footer a {
     gap: 14px !important;
   }
 }
+/* Restore desktop fundraising layout */
+.fundraising-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 8vw;
+  align-items: end;
+}
+
+@media (max-width: 700px) {
+  .fundraising-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
