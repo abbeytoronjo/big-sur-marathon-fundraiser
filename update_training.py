@@ -64,14 +64,14 @@ for item in items:
     # RUNALYZE puts the distance inside content:encoded.
     distance = None
 
-    match = re.search(
-        r"<b>Distance</b>:\s*([\d.]+)&nbsp;mi",
-        content,
-        re.IGNORECASE
-    )
+match = re.search(
+    r"<b>Distance</b>:\s*([\d.,]+)&nbsp;mi",
+    content,
+    re.IGNORECASE
+)
 
-    if match:
-        distance = float(match.group(1))
+if match:
+    distance = float(match.group(1).replace(",", "."))
 
     if distance is not None:
         activities.append({
@@ -81,12 +81,6 @@ for item in items:
         })
 
 print(f"Found {len(items)} RSS activity items")
-
-if items:
-    print("FIRST RSS ITEM:")
-    for child in items[0]:
-        print(child.tag, "=", repr(child.text))
-
 print(f"Parsed {len(activities)} activities since {START_DATE}")
 
 # Sort newest first.
