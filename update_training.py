@@ -7,7 +7,14 @@ FEED_URL = "https://runalyze.com/athlete/abbeyruns/feed"
 START_DATE = "2026-08-01"
 
 # Download the public RUNALYZE RSS feed
-with urllib.request.urlopen(FEED_URL) as response:
+request = urllib.request.Request(
+    FEED_URL,
+    headers={
+        "User-Agent": "Mozilla/5.0 (compatible; BigSurTrainingTracker/1.0)"
+    }
+)
+
+with urllib.request.urlopen(request) as response:
     xml_data = response.read()
 
 root = ET.fromstring(xml_data)
