@@ -1,4 +1,5 @@
 import json
+import re
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime
@@ -23,7 +24,10 @@ activities = []
 
 for item in root.findall(".//item"):
     title = item.findtext("title", "")
-    description = item.findtext("description", "")
+       content = item.findtext(
+        "{http://purl.org/rss/1.0/modules/content/}encoded",
+        ""
+    )
     pub_date = item.findtext("pubDate", "")
 
     if not pub_date:
@@ -40,21 +44,16 @@ for item in root.findall(".//item"):
     if activity_date.isoformat() < START_DATE:
         continue
 
-    # Look for a distance value in the activity description.
+       # RUNALYZE puts the distance inside content:encoded.
     distance = None
 
-    for line in description.replace("<br>", "\n").splitlines():
-        line = line.strip()
+    match = re.search(
+        r"<b>Distance</b>:\s*([\d.]+)&nbsp;mi",
+        content
+    )
 
-        if "Distance" in line:
-            parts = line.replace(",", "").split()
-            for i, part in enumerate(parts):
-                if part.lower() in ("mi", "miles") and i > 0:
-                    try:
-                        distance = float(parts[i - 1])
-                        break
-                    except ValueError:
-                        pass
+    if match:
+        distance = float(match.group(1))
 
     if distance is not None:
         activities.append({
