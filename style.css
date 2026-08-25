@@ -15,7 +15,7 @@ a { color: inherit; }
 .hero {
   min-height: 100vh;
   position: relative;
-  padding: 28px 5vw 6vw;
+  padding: 16px 5vw 6vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
