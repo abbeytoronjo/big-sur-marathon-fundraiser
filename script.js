@@ -20,7 +20,30 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 60 * 60 * 1000);
 
-// Placeholder Strava stats until OAuth/API is connected.
-document.getElementById("total-miles").textContent = "—";
-document.getElementById("run-count").textContent = "—";
-document.getElementById("last-run").textContent = "—";
+// RUNALYZE training stats
+fetch("training-data.json")
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("total-miles").textContent =
+      data.miles.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    document.getElementById("run-count").textContent =
+      data.runs.toLocaleString();
+
+    if (data.latest_run) {
+      document.getElementById("last-run").textContent =
+        `${data.latest_run.distance.toFixed(2)} mi`;
+
+      const lastRunDate = document.getElementById("last-run-date");
+      if (lastRunDate) {
+        const date = new Date(`${data.latest_run.date}T12:00:00`);
+        lastRunDate.textContent = date.toLocaleDateString(undefined, {
+          month: "short",
+          day: "numeric"
+        });
+      }
+    }
+  })
+  .catch(error => {
+    console.error("Could not load RUNALYZE training data:", error);
+  });
