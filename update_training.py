@@ -81,6 +81,12 @@ for item in items:
         })
 
 print(f"Found {len(items)} RSS activity items")
+
+if items:
+    print("FIRST RSS ITEM:")
+    for child in items[0]:
+        print(child.tag, "=", repr(child.text))
+
 print(f"Parsed {len(activities)} activities since {START_DATE}")
 
 # Sort newest first.
