@@ -91,9 +91,9 @@ nav {
 }
 
 .hero h1 em {
-  display: inline-block;
   font-weight: 500;
-  transform: translateX(-0.04em);
+  display: inline-block;
+  margin-left: -0.04em;
 }
 
 .intro {
