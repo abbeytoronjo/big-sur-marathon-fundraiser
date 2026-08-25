@@ -31,6 +31,11 @@ nav { display: flex; justify-content: space-between; align-items: center; gap: 3
 .nav-links { display: flex; gap: 10px; align-items: center; }
 .nav-link { display: inline-flex; align-items: center; justify-content: center; min-width: 100px; height: 40px; color: var(--ink); background: white; text-decoration: none; border: 1px solid rgba(255,255,255,.9); box-shadow: 0 6px 18px rgba(0,0,0,.12); }
 
+@media (min-width: 701px) {
+  .hero > nav { position: relative; padding-top: 0; }
+  .nav-eyebrow { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); }
+}
+
 .hero-content { max-width: 900px; padding-bottom: 3vw; text-align: left; position: relative; z-index: 2; }
 .hero-content .eyebrow { text-align: center; }
 .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(3.5rem, 8vw, 8.5rem); line-height: .92; letter-spacing: -.05em; margin: 18px 0 28px; text-align: left; }
