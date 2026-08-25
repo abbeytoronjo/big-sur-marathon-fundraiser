@@ -46,16 +46,22 @@ for item in items:
         elif tag == "pubDate":
             pub_date = child.text or ""
 
-    if not pub_date:
-        continue
+    # RUNALYZE puts the actual activity date inside content:encoded.
+date_match = re.search(
+    r"<b>Date</b>:\s*(\d{2}/\d{2}/\d{4})",
+    content
+)
 
-    try:
-        activity_date = datetime.strptime(
-            pub_date,
-            "%a, %d %b %Y %H:%M:%S %z"
-        ).date()
-    except ValueError:
-        continue
+if not date_match:
+    continue
+
+try:
+    activity_date = datetime.strptime(
+        date_match.group(1),
+        "%m/%d/%Y"
+    ).date()
+except ValueError:
+    continue
 
     # Only count activities from August 1, 2026 onward.
     if activity_date.isoformat() < START_DATE:
