@@ -22,13 +22,29 @@ root = ET.fromstring(xml_data)
 
 activities = []
 
-for item in root.findall(".//item"):
-    title = item.findtext("title", "")
-    content = item.findtext(
-        "{http://purl.org/rss/1.0/modules/content/}encoded",
-        ""
-    )
-    pub_date = item.findtext("pubDate", "")
+# Find RSS activity items regardless of XML namespace.
+items = [
+    element
+    for element in root.iter()
+    if element.tag.split("}")[-1] == "item"
+]
+
+for item in items:
+    title = ""
+    content = ""
+    pub_date = ""
+
+    for child in item:
+        tag = child.tag.split("}")[-1]
+
+        if tag == "title":
+            title = child.text or ""
+
+        elif tag == "encoded":
+            content = child.text or ""
+
+        elif tag == "pubDate":
+            pub_date = child.text or ""
 
     if not pub_date:
         continue
@@ -41,6 +57,7 @@ for item in root.findall(".//item"):
     except ValueError:
         continue
 
+    # Only count activities from August 1, 2026 onward.
     if activity_date.isoformat() < START_DATE:
         continue
 
@@ -49,7 +66,8 @@ for item in root.findall(".//item"):
 
     match = re.search(
         r"<b>Distance</b>:\s*([\d.]+)&nbsp;mi",
-        content
+        content,
+        re.IGNORECASE
     )
 
     if match:
@@ -62,10 +80,14 @@ for item in root.findall(".//item"):
             "distance": distance,
         })
 
-# Sort newest first
+# Sort newest first.
 activities.sort(key=lambda x: x["date"], reverse=True)
 
-total_miles = round(sum(a["distance"] for a in activities), 2)
+total_miles = round(
+    sum(activity["distance"] for activity in activities),
+    2
+)
+
 run_count = len(activities)
 
 latest_run = activities[0] if activities else None
