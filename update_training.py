@@ -49,13 +49,13 @@ for item in items:
     if not pub_date:
         continue
 
-    try:
-        activity_date = datetime.strptime(
-            pub_date[:25],
-            "%a, %d %b %Y %H:%M:%S"
-        ).date()
-    except ValueError:
-        continue
+   try:
+    activity_date = datetime.strptime(
+        pub_date,
+        "%a, %d %b %Y %H:%M:%S %z"
+    ).date()
+except ValueError:
+    continue
 
     # Only count activities from August 1, 2026 onward.
     if activity_date.isoformat() < START_DATE:
