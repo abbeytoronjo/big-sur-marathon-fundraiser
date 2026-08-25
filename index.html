@@ -3,330 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Abbey Runs Big Sur 2027</title>
-
-  <meta
-    name="description"
-    content="Abbey Toronjo is running the 2027 Big Sur International Marathon for Girls on the Run Central Coast."
-  >
-
+  <meta name="description" content="Abbey Toronjo is running the 2027 Big Sur International Marathon for Girls on the Run Central Coast.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    .mobile-hero-content { display: none; }
-
-    @media (max-width: 700px) {
-      .hero-content { display: none; }
-
-      .mobile-hero-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: relative;
-        z-index: 2;
-        margin-top: auto;
-        margin-bottom: auto;
-        padding: 0;
-      }
-
-      .mobile-hero-content .eyebrow { display: none; }
-
-      .mobile-hero-content h1 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(3.6rem, 15vw, 5.2rem);
-        line-height: .91;
-        letter-spacing: -.05em;
-        margin: 0;
-        max-width: 100%;
-      }
-
-      .mobile-hero-content h1 em { font-weight: 500; }
-
-      .hero {
-        min-height: 100svh;
-        padding: 64px 6vw 9vw;
-        background-position: center top;
-      }
-
-      .hero::before {
-        content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 10;
-        height: 42px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--ink);
-        color: white;
-        font-size: .58rem;
-        font-weight: 700;
-        letter-spacing: .08em;
-        white-space: nowrap;
-      }
-
-      .hero-raised { display: none; }
-    }
-  </style>
 </head>
-
 <body>
-
   <main>
-
-    <!-- HERO -->
     <section class="hero">
-
       <nav>
         <div class="wordmark">ABBEY TORONJO</div>
-
-        <div class="nav-eyebrow">
-          BIG SUR INTERNATIONAL MARATHON 2027 · APRIL 25, 2027
-        </div>
-
+        <div class="nav-eyebrow">BIG SUR INTERNATIONAL MARATHON 2027 · APRIL 25, 2027</div>
         <div class="nav-links">
-          <a
-            class="nav-link"
-            href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533"
-            target="_blank"
-            rel="noopener"
-          >
-            DONATE
-          </a>
-
-          <a class="nav-link" href="#training">
-            TRAINING
-          </a>
+          <a class="nav-link" href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533" target="_blank" rel="noopener">DONATE</a>
+          <a class="nav-link" href="#training">TRAINING</a>
         </div>
       </nav>
 
-      <!-- DESKTOP HERO -->
       <div class="hero-content">
-        <h1>
-          Running for<br>
-          <em>Girls on the Run.</em>
-        </h1>
-
-        <p class="intro">
-          I'm running 26.2 miles along the California coast to raise $2,000
-          for Girls on the Run Central Coast.
-        </p>
-
+        <h1>Running for<br><em>Girls on the Run.</em></h1>
+        <p class="intro">I'm running 26.2 miles along the California coast to raise $2,000 for Girls on the Run Central Coast.</p>
         <div class="hero-actions">
-          <a
-            class="button hero-donate"
-            href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533"
-            target="_blank"
-            rel="noopener"
-          >
-            Donate <span>→</span>
-          </a>
-
-          <a class="hero-text-link hero-training" href="#training">
-            Follow my training ↓
-          </a>
+          <a class="button hero-donate" href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533" target="_blank" rel="noopener">Donate <span>→</span></a>
+          <a class="hero-text-link hero-training" href="#training">Follow my training ↓</a>
         </div>
       </div>
 
-      <!-- MOBILE HERO -->
-      <div class="mobile-hero-content">
-        <h1>
-          Running for<br>
-          <em>Girls on the Run.</em>
-        </h1>
-      </div>
-
-      <!-- HERO BOTTOM -->
       <div class="hero-bottom">
         <div>
           <span class="hero-number" id="countdown-days">—</span>
           <span class="hero-caption">days until race day</span>
         </div>
-
         <div class="hero-raised">
           <strong>$2,000</strong>
           <span>fundraising goal</span>
         </div>
       </div>
-
     </section>
 
-    <!-- WHY I'M RUNNING -->
     <section class="story section">
       <div class="section-label">01 — WHY I'M RUNNING</div>
-
       <div class="story-grid">
         <h2>Running has been part of my life for as long as I can remember.</h2>
-
         <div class="body-copy">
-          <p>
-            Running has been part of my life from a young age, all the way
-            through college as an NCAA Division I cross country and track
-            athlete. It has given me community, confidence, and some of my
-            favorite memories.
-          </p>
-
-          <p>
-            I never had the opportunity to participate in Girls on the Run,
-            but I love its mission and dedication to empowering young girls
-            through the joy of running. This marathon is an opportunity to
-            give back to a sport that has given me so much.
-          </p>
+          <p>Running has been part of my life from a young age, all the way through college as an NCAA Division I cross country and track athlete. It has given me community, confidence, and some of my favorite memories.</p>
+          <p>I never had the opportunity to participate in Girls on the Run, but I love its mission and dedication to empowering young girls through the joy of running. This marathon is an opportunity to give back to a sport that has given me so much.</p>
         </div>
       </div>
     </section>
 
-    <!-- THE CAUSE -->
     <section class="cause section">
       <div class="section-label">02 — THE CAUSE</div>
-
       <div class="cause-card">
         <div>
           <p class="eyebrow">GIRLS ON THE RUN CENTRAL COAST</p>
           <h2>Helping girls discover the joy of running.</h2>
         </div>
-
-        <p class="body-copy">
-          Girls on the Run uses running and physical activity to help girls
-          build confidence, develop life skills, and create a strong sense
-          of community.
-        </p>
+        <p class="body-copy">Girls on the Run uses running and physical activity to help girls build confidence, develop life skills, and create a strong sense of community.</p>
       </div>
     </section>
 
-    <!-- FUNDRAISING -->
     <section class="fundraising section" id="donate">
       <div class="section-label">03 — THE GOAL</div>
-
       <div class="fundraising-grid">
         <div>
           <p class="eyebrow">MY FUNDRAISING GOAL</p>
           <div class="goal">$2,000</div>
-          <p class="muted">
-            Help me reach my $2,000 fundraising goal for Girls on the Run
-            Central Coast.
-          </p>
-
-          <a
-            class="button dark"
-            href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533"
-            target="_blank"
-            rel="noopener"
-          >
-            Donate now <span>↗</span>
-          </a>
+          <p class="muted">Help me reach my $2,000 fundraising goal for Girls on the Run Central Coast.</p>
+          <a class="button dark" href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533" target="_blank" rel="noopener">Donate now <span>↗</span></a>
         </div>
-
         <div class="progress-wrap">
-          <div class="progress-meta">
-            <span>Raised</span>
-            <strong id="raised">$0</strong>
-          </div>
-
+          <div class="progress-meta"><span>Raised</span><strong id="raised">$0</strong></div>
           <div class="progress"><div id="progress-bar"></div></div>
-
-          <div class="progress-meta small">
-            <span>Goal</span>
-            <span>$2,000</span>
-          </div>
-
-          <p class="tiny">
-            Your donation goes directly through my official Girls on the Run
-            Central Coast fundraising page.
-          </p>
+          <div class="progress-meta small"><span>Goal</span><span>$2,000</span></div>
+          <p class="tiny">Your donation goes directly through my official Girls on the Run Central Coast fundraising page.</p>
         </div>
       </div>
     </section>
 
-    <!-- TRAINING -->
     <section class="training section" id="training">
       <div class="section-label">04 — FOLLOW THE TRAINING</div>
-
       <div class="training-head">
-        <div>
-          <p class="eyebrow">FOLLOW MY TRAINING</p>
-          <h2>The road to Big Sur.</h2>
-        </div>
-
-        <a class="text-link" href="https://runalyze.com/athlete/abbeyruns" target="_blank" rel="noopener">
-          View my live training ↗
-        </a>
+        <div><p class="eyebrow">FOLLOW MY TRAINING</p><h2>The road to Big Sur.</h2></div>
+        <a class="text-link" href="https://runalyze.com/athlete/abbeyruns" target="_blank" rel="noopener">View my live training ↗</a>
       </div>
-
       <div class="stats">
-        <div class="stat">
-          <strong id="total-miles">—</strong>
-          <span>Miles logged: since Aug. 1</span>
-        </div>
-
-        <div class="stat">
-          <strong id="run-count">—</strong>
-          <span>Runs since: Aug. 1</span>
-        </div>
-
-        <div class="stat">
-          <strong id="last-run">—</strong>
-          <span>Latest run: <span id="last-run-date">—</span></span>
-        </div>
+        <div class="stat"><strong id="total-miles">—</strong><span>Miles logged: since Aug. 1</span></div>
+        <div class="stat"><strong id="run-count">—</strong><span>Runs since: Aug. 1</span></div>
+        <div class="stat"><strong id="last-run">—</strong><span>Latest run: <span id="last-run-date">—</span></span></div>
       </div>
-
       <div class="strava-placeholder">
         <p class="eyebrow">GARMIN → RUNALYZE</p>
         <h3>Follow along as I train for Big Sur.</h3>
-        <p>
-          My Garmin runs automatically sync to RUNALYZE, so you can follow
-          my training, mileage, and progress throughout the journey to Big Sur.
-        </p>
-
-        <a class="text-link" href="https://runalyze.com/athlete/abbeyruns" target="_blank" rel="noopener">
-          See my latest training ↗
-        </a>
+        <p>My Garmin runs automatically sync to RUNALYZE, so you can follow my training, mileage, and progress throughout the journey to Big Sur.</p>
+        <a class="text-link" href="https://runalyze.com/athlete/abbeyruns" target="_blank" rel="noopener">See my latest training ↗</a>
       </div>
     </section>
 
-    <!-- BIG SUR -->
     <section class="race section">
       <div class="section-label">05 — BIG SUR</div>
-
       <div class="race-grid">
-        <div>
-          <p class="eyebrow">APRIL 25, 2027</p>
-          <h2>26.2 miles along the California coast.</h2>
-        </div>
-
-        <p class="body-copy">
-          The Big Sur International Marathon follows Highway 1 along the
-          spectacular Big Sur coastline. This is the finish line I'm
-          working toward.
-        </p>
+        <div><p class="eyebrow">APRIL 25, 2027</p><h2>26.2 miles along the California coast.</h2></div>
+        <p class="body-copy">The Big Sur International Marathon follows Highway 1 along the spectacular Big Sur coastline. This is the finish line I'm working toward.</p>
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
       <div>ABBEY RUNS BIG SUR · 2027</div>
-
-      <div>
-        <a href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533" target="_blank" rel="noopener">DONATE</a>
-        ·
-        <a href="https://www.strava.com/athletes/74266611" target="_blank" rel="noopener">STRAVA</a>
-      </div>
+      <div><a href="https://donate.hakuapp.com/donations/new?fundraiser=3252358eaeeef64d4533" target="_blank" rel="noopener">DONATE</a> · <a href="https://www.strava.com/athletes/74266611" target="_blank" rel="noopener">STRAVA</a></div>
     </footer>
-
   </main>
-
   <script src="script.js"></script>
-
 </body>
 </html>
