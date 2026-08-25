@@ -32,8 +32,11 @@ a {
 ======================================== */
 
 .hero {
-  min-height: 92vh;
-  padding: 28px 5vw 8vw;
+  min-height: 100vh;
+  position: relative;
+
+  padding: 28px 5vw 6vw;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,6 +52,11 @@ a {
 
   color: white;
 }
+
+
+/* ========================================
+   NAVIGATION
+======================================== */
 
 nav {
   display: flex;
@@ -72,25 +80,40 @@ nav {
 }
 
 .nav-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 100px;
+  height: 40px;
+
+  color: var(--ink);
+  background: white;
+
   text-decoration: none;
-  padding: 10px 15px;
-  background: rgba(12, 24, 21, 0.38);
-  border: 1px solid rgba(255,255,255,.25);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+
+  border: 1px solid rgba(255,255,255,.9);
+
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
 }
 
 
-/* Hero content alignment */
+/* ========================================
+   HERO CONTENT
+======================================== */
 
 .hero-content {
   max-width: 900px;
   padding-bottom: 3vw;
+
   text-align: left;
+
+  position: relative;
+  z-index: 2;
 }
 
-/* Eyebrow stays centered */
+
+/* Centered eyebrow */
 
 .hero-content .eyebrow {
   text-align: center;
@@ -104,7 +127,9 @@ nav {
   font-size: clamp(3.5rem, 8vw, 8.5rem);
   line-height: .92;
   letter-spacing: -.05em;
+
   margin: 18px 0 28px;
+
   text-align: left;
 }
 
@@ -119,96 +144,159 @@ nav {
 
 .intro {
   max-width: 600px;
+
   font-size: 1.15rem;
   line-height: 1.6;
+
+  padding: 14px 18px;
+
+  background: rgba(12,24,21,.38);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 
-/* Hero buttons */
+/* ========================================
+   HERO BUTTONS
+======================================== */
 
 .hero-actions {
   display: flex;
   align-items: center;
+
   gap: 12px;
-  flex-wrap: wrap;
+
+  flex-wrap: nowrap;
 }
+
+
+/* Donate button */
 
 .button {
   display: inline-flex;
-  gap: 28px;
   align-items: center;
+  justify-content: center;
+
+  gap: 28px;
+
+  height: 50px;
+
+  padding: 0 21px;
+
+  margin-top: 0;
+
   background: white;
   color: var(--ink);
-  padding: 16px 21px;
-  margin-top: 18px;
+
   text-decoration: none;
+
   font-weight: 700;
   font-size: .85rem;
+
+  box-shadow: 0 8px 24px rgba(0,0,0,.16);
 }
 
-.button.dark {
-  background: var(--ink);
-  color: white;
-}
+
+/* Follow my training button */
 
 .hero-text-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 50px;
+
+  gap: 28px;
+
+  height: 50px;
+
   padding: 0 21px;
 
-  color: var(--ink);
   background: white;
+  color: var(--ink);
 
   text-decoration: none;
-  font-size: .85rem;
-  font-weight: 700;
-  letter-spacing: 0;
 
-  border: 1px solid white;
+  font-weight: 700;
+  font-size: .85rem;
+
+  border: 0;
+
   box-shadow: 0 8px 24px rgba(0,0,0,.16);
 }
 
 
-/* Hero bottom */
+/* ========================================
+   HERO BOTTOM
+======================================== */
 
 .hero-bottom {
   display: flex;
   justify-content: space-between;
   align-items: end;
+
   gap: 30px;
+
   position: relative;
   z-index: 2;
 }
 
 .hero-number {
   display: block;
+
   font-family: "Playfair Display", serif;
+
   font-size: clamp(3.8rem, 7vw, 7rem);
+
   line-height: .85;
+
   letter-spacing: -.05em;
 }
 
 .hero-caption,
 .hero-raised span {
   display: block;
+
   margin-top: 24px;
+
   font-size: .7rem;
+
   letter-spacing: .12em;
+
   text-transform: uppercase;
+
   font-weight: 700;
 }
 
+
+/* Fundraising goal box */
+
 .hero-raised {
   text-align: center;
+
+  padding: 18px 22px;
+
+  background: rgba(12,24,21,.42);
+
+  border: 1px solid rgba(255,255,255,.18);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .hero-raised strong {
   display: block;
+
   font-family: "Playfair Display", serif;
+
   font-size: 2rem;
+
   font-weight: 600;
+
+  text-align: center;
+}
+
+.hero-raised span {
+  text-align: center;
 }
 
 
@@ -218,11 +306,13 @@ nav {
 
 .section {
   padding: 110px 8vw;
+
   border-bottom: 1px solid var(--line);
 }
 
 .section-label {
   color: var(--muted);
+
   margin-bottom: 55px;
 }
 
@@ -231,21 +321,29 @@ nav {
 .fundraising-grid,
 .race-grid {
   display: grid;
+
   grid-template-columns: 1.1fr .9fr;
+
   gap: 8vw;
 }
 
 h2 {
   font-family: "Playfair Display", serif;
+
   font-size: clamp(2.4rem, 5vw, 5.5rem);
+
   line-height: .98;
+
   letter-spacing: -.04em;
+
   margin: 0;
 }
 
 .body-copy {
   font-size: 1.05rem;
+
   line-height: 1.8;
+
   max-width: 620px;
 }
 
@@ -260,6 +358,7 @@ h2 {
 
 .cause-card {
   padding: 60px;
+
   background: #f8f4eb;
 }
 
@@ -274,9 +373,13 @@ h2 {
 
 .goal {
   font-family: "Playfair Display", serif;
+
   font-size: clamp(5rem, 11vw, 10rem);
+
   line-height: .9;
+
   letter-spacing: -.06em;
+
   margin: 20px 0;
 }
 
@@ -290,32 +393,43 @@ h2 {
 
 .progress {
   height: 14px;
+
   background: rgba(22,35,31,.12);
+
   overflow: hidden;
 }
 
 .progress > div {
   height: 100%;
+
   width: 0%;
+
   background: var(--ink);
+
   transition: width .8s ease;
 }
 
 .progress-meta {
   display: flex;
+
   justify-content: space-between;
+
   margin-bottom: 12px;
+
   font-size: .9rem;
 }
 
 .progress-meta.small {
   margin-top: 12px;
+
   color: var(--muted);
 }
 
 .tiny {
   color: var(--muted);
+
   font-size: .72rem;
+
   line-height: 1.5;
 }
 
@@ -326,6 +440,7 @@ h2 {
 
 .training {
   background: var(--ink);
+
   color: white;
 }
 
@@ -336,28 +451,39 @@ h2 {
 
 .training-head {
   display: flex;
+
   justify-content: space-between;
+
   gap: 40px;
+
   align-items: end;
 }
 
 .text-link {
   font-weight: 700;
+
   text-decoration: none;
+
   border-bottom: 1px solid rgba(255,255,255,.5);
+
   padding-bottom: 6px;
 }
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  grid-template-columns: repeat(3,1fr);
+
   margin: 70px 0 45px;
+
   border-top: 1px solid rgba(255,255,255,.2);
+
   border-bottom: 1px solid rgba(255,255,255,.2);
 }
 
 .stat {
   padding: 35px 25px 35px 0;
+
   border-right: 1px solid rgba(255,255,255,.2);
 }
 
@@ -371,26 +497,35 @@ h2 {
 
 .stat strong {
   display: block;
+
   font-family: "Playfair Display", serif;
-  font-size: clamp(2.5rem, 5vw, 5rem);
+
+  font-size: clamp(2.5rem,5vw,5rem);
 }
 
 .stat span {
   color: #b9c1bc;
+
   font-size: .8rem;
+
   letter-spacing: .1em;
+
   text-transform: uppercase;
 }
 
 .strava-placeholder {
   border: 1px solid rgba(255,255,255,.2);
+
   padding: 40px;
+
   max-width: 850px;
 }
 
 .strava-placeholder h3 {
   font-family: "Playfair Display", serif;
+
   font-size: 2rem;
+
   margin: 12px 0;
 }
 
@@ -410,10 +545,15 @@ h2 {
 
 footer {
   display: flex;
+
   justify-content: space-between;
+
   padding: 35px 5vw;
+
   font-size: .7rem;
+
   letter-spacing: .12em;
+
   font-weight: 700;
 }
 
@@ -430,18 +570,20 @@ footer a {
 
   .hero {
     min-height: 100svh;
+
     padding: 64px 6vw 10vw;
 
     background-position: center 20%;
   }
 
 
-  /* Mobile eyebrow bar */
+  /* Mobile Big Sur/date bar */
 
   .hero::before {
     content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027";
 
     position: absolute;
+
     top: 0;
     left: 0;
     right: 0;
@@ -451,38 +593,51 @@ footer a {
     height: 42px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     background: var(--ink);
+
     color: white;
 
     font-size: .58rem;
+
     font-weight: 700;
+
     letter-spacing: .07em;
 
     white-space: nowrap;
   }
 
 
-  /* Hide the duplicate eyebrow inside the image */
+  /* Hide desktop eyebrow */
 
   .hero-content .eyebrow {
     display: none;
   }
 
 
-  /* Simplify mobile hero */
+  /* Mobile hero content */
 
   .hero-content {
     max-width: 100%;
+
     text-align: left;
+
+    margin-top: auto;
+    margin-bottom: auto;
   }
+
 
   .hero h1 {
     text-align: left;
-    font-size: clamp(3.6rem, 15vw, 5.2rem);
+
+    font-size: clamp(3.6rem,15vw,5.2rem);
+
     line-height: .91;
+
     margin: 0;
   }
 
@@ -491,24 +646,51 @@ footer a {
     padding: 0;
   }
 
-  .hero-content .intro,
+
+  /* Keep mobile hero clean */
+
+  .hero-content .intro {
+    display: none;
+  }
+
+
+  /* Stack hero buttons */
+
   .hero-actions {
-    display: none;
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    width: 100%;
+
+    margin-top: 25px;
+  }
+
+  .hero-actions .button,
+  .hero-actions .hero-text-link {
+    width: 100%;
+
+    height: 50px;
+
+    justify-content: center;
+
+    margin-top: 0;
   }
 
 
-  /* Hide fundraising goal on mobile */
-
-  .hero-raised {
-    display: none;
-  }
-
-
-  /* Countdown */
+  /* Hero bottom */
 
   .hero-bottom {
     justify-content: flex-start;
+
     align-items: flex-start;
+  }
+
+
+  .hero-raised {
+    display: none;
   }
 
   .hero-number {
@@ -520,7 +702,7 @@ footer a {
   }
 
 
-  /* General mobile sections */
+  /* General sections */
 
   .section {
     padding: 75px 7vw;
@@ -531,6 +713,7 @@ footer a {
   .fundraising-grid,
   .race-grid {
     grid-template-columns: 1fr;
+
     gap: 40px;
   }
 
@@ -543,6 +726,7 @@ footer a {
 
   .training-head {
     flex-direction: column;
+
     align-items: flex-start;
   }
 
@@ -553,7 +737,9 @@ footer a {
   .stat,
   .stat:not(:first-child) {
     border-right: 0;
+
     border-bottom: 1px solid rgba(255,255,255,.2);
+
     padding: 25px 0;
   }
 
@@ -562,60 +748,7 @@ footer a {
 
   footer {
     flex-direction: column;
+
     gap: 15px;
   }
-}
-/* ========================================
-   HERO TEXT PANELS
-======================================== */
-
-/* Subtle panel behind the intro */
-.hero-content .intro {
-  display: inline-block;
-  max-width: 600px;
-  padding: 14px 18px;
-  background: rgba(12, 24, 21, 0.38);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-
-
-/* Make the training link easier to see */
-.hero-text-link {
-  display: inline-block;
-  padding: 12px 16px;
-  background: rgba(12, 24, 21, 0.38);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,.25);
-}
-
-
-/* Give the fundraising goal its own visual weight */
-.hero-raised {
-  padding: 18px 22px;
-  background: rgba(12, 24, 21, 0.42);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255,255,255,.18);
-}
-
-
-/* Keep mobile clean */
-@media (max-width: 700px) {
-
-  .hero-content .intro {
-    display: none;
-  }
-
-  .hero-text-link {
-    display: none;
-  }
-
-  .hero-raised {
-    display: none;
-  }
-
-}.button {
-  box-shadow: 0 8px 24px rgba(0,0,0,.16);
 }
