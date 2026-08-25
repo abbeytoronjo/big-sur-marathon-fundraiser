@@ -47,21 +47,21 @@ for item in items:
             pub_date = child.text or ""
 
     # RUNALYZE puts the actual activity date inside content:encoded.
-date_match = re.search(
-    r"<b>Date</b>:\s*(\d{2}/\d{2}/\d{4})",
-    content
-)
+    date_match = re.search(
+        r"<b>Date</b>:\s*(\d{2}/\d{2}/\d{4})",
+        content
+    )
 
-if not date_match:
-    continue
+    if not date_match:
+        continue
 
-try:
-    activity_date = datetime.strptime(
-        date_match.group(1),
-        "%m/%d/%Y"
-    ).date()
-except ValueError:
-    continue
+    try:
+        activity_date = datetime.strptime(
+            date_match.group(1),
+            "%m/%d/%Y"
+        ).date()
+    except ValueError:
+        continue
 
     # Only count activities from August 1, 2026 onward.
     if activity_date.isoformat() < START_DATE:
@@ -70,14 +70,14 @@ except ValueError:
     # RUNALYZE puts the distance inside content:encoded.
     distance = None
 
-match = re.search(
-    r"<b>Distance</b>:\s*([\d.,]+)&nbsp;mi",
-    content,
-    re.IGNORECASE
-)
+    match = re.search(
+        r"<b>Distance</b>:\s*([\d.,]+)&nbsp;mi",
+        content,
+        re.IGNORECASE
+    )
 
-if match:
-    distance = float(match.group(1).replace(",", "."))
+    if match:
+        distance = float(match.group(1).replace(",", "."))
 
     if distance is not None:
         activities.append({
