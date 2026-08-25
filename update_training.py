@@ -49,13 +49,13 @@ for item in items:
     if not pub_date:
         continue
 
-   try:
-    activity_date = datetime.strptime(
-        pub_date,
-        "%a, %d %b %Y %H:%M:%S %z"
-    ).date()
-except ValueError:
-    continue
+    try:
+        activity_date = datetime.strptime(
+            pub_date,
+            "%a, %d %b %Y %H:%M:%S %z"
+        ).date()
+    except ValueError:
+        continue
 
     # Only count activities from August 1, 2026 onward.
     if activity_date.isoformat() < START_DATE:
@@ -79,7 +79,7 @@ except ValueError:
             "title": title,
             "distance": distance,
         })
-        
+
 print(f"Found {len(items)} RSS activity items")
 print(f"Parsed {len(activities)} activities since {START_DATE}")
 
