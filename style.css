@@ -27,18 +27,18 @@ a {
 }
 
 
-/* =========================
+/* =========================================
    HERO
-========================= */
+========================================= */
 
 .hero {
-  min-height: 100svh;
-  padding: 64px 6vw 9vw;
-  background-position: center 20%;
-}
+  min-height: 100vh;
+  position: relative;
+  padding: 28px 5vw 6vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   background:
     linear-gradient(
       90deg,
@@ -47,6 +47,7 @@ a {
       rgba(12,24,21,.03) 100%
     ),
     url("hero.jpg") center top / cover;
+
   color: white;
 }
 
@@ -79,6 +80,7 @@ nav {
 
 .hero-content {
   max-width: 620px;
+  padding-bottom: 0;
   margin-top: auto;
   margin-bottom: auto;
   position: relative;
@@ -178,9 +180,18 @@ nav {
 }
 
 
-/* =========================
+/* =========================================
+   MOBILE HERO CONTENT
+========================================= */
+
+.mobile-hero-content {
+  display: none;
+}
+
+
+/* =========================================
    GENERAL SECTIONS
-========================= */
+========================================= */
 
 .section {
   padding: 110px 8vw;
@@ -190,6 +201,15 @@ nav {
 .section-label {
   color: var(--muted);
   margin-bottom: 55px;
+}
+
+.story-grid,
+.cause-card,
+.fundraising-grid,
+.race-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 8vw;
 }
 
 h2 {
@@ -206,28 +226,10 @@ h2 {
   max-width: 620px;
 }
 
-.story-grid,
-.cause-card,
-.fundraising-grid,
-.race-grid {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 8vw;
-}
 
-
-/* =========================
-   STORY
-========================= */
-
-.story {
-  background: var(--paper);
-}
-
-
-/* =========================
+/* =========================================
    CAUSE
-========================= */
+========================================= */
 
 .cause {
   background: var(--paper2);
@@ -239,9 +241,9 @@ h2 {
 }
 
 
-/* =========================
+/* =========================================
    FUNDRAISING
-========================= */
+========================================= */
 
 .fundraising-grid {
   align-items: end;
@@ -295,9 +297,9 @@ h2 {
 }
 
 
-/* =========================
+/* =========================================
    TRAINING
-========================= */
+========================================= */
 
 .training {
   background: var(--ink);
@@ -372,18 +374,18 @@ h2 {
 }
 
 
-/* =========================
+/* =========================================
    RACE
-========================= */
+========================================= */
 
 .race {
   background: #d9e1dc;
 }
 
 
-/* =========================
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 footer {
   display: flex;
@@ -399,89 +401,111 @@ footer a {
 }
 
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media (max-width: 700px) {
 
-  /* HERO */
+  /* -----------------------------------------
+     HERO
+  ----------------------------------------- */
 
   .hero {
     min-height: 100svh;
-    padding: 22px 6vw 9vw;
-    background-position: 58% top;
+    padding: 64px 6vw 9vw;
+
+    /*
+      Keep the desktop image behavior,
+      but move the mobile crop slightly down
+      so there is more room above your head.
+    */
+    background-position: center 20%;
   }
 
-  nav {
-    align-items: flex-start;
+  /* Small marathon information strip above photo */
+
+  .hero::before {
+    content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 10;
+
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--ink);
+    color: white;
+
+    font-size: .58rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+
+    white-space: nowrap;
   }
 
-  .wordmark,
-  .nav-link,
-  .eyebrow,
-  .section-label {
-    font-size: .64rem;
-  }
-
-  .nav-links {
-    gap: 15px;
-  }
+  /* Hide desktop hero content */
 
   .hero-content {
+    display: none;
+  }
+
+  /* Mobile headline */
+
+  .mobile-hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+    z-index: 2;
+
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .mobile-hero-content h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3.6rem, 15vw, 5.2rem);
+    line-height: .91;
+    letter-spacing: -.05em;
+    margin: 0;
     max-width: 100%;
   }
 
-  .hero h1 {
-    font-size: clamp(3.4rem, 15vw, 5rem);
-    line-height: .92;
-    margin: 14px 0 20px;
+  .mobile-hero-content h1 em {
+    font-weight: 500;
   }
 
-  .intro {
-    max-width: 330px;
-    font-size: .98rem;
-    line-height: 1.5;
-  }
+  /* Hide fundraising goal from mobile hero */
 
-  .hero-actions {
-    gap: 18px;
-  }
-
-  .button {
-    padding: 14px 18px;
-    margin-top: 12px;
-  }
-
-  .hero-text-link {
-    font-size: .7rem;
+  .hero-raised {
+    display: none;
   }
 
   .hero-bottom {
-    align-items: flex-start;
-    gap: 20px;
+    justify-content: flex-start;
   }
 
   .hero-number {
-    font-size: 4.3rem;
+    font-size: 4.5rem;
   }
 
-  .hero-caption,
-  .hero-raised span {
+  .hero-caption {
     margin-top: 14px;
-    font-size: .62rem;
-  }
-
-  .hero-raised {
-    text-align: left;
-  }
-
-  .hero-raised strong {
-    font-size: 1.65rem;
   }
 
 
-  /* SECTIONS */
+  /* -----------------------------------------
+     GENERAL MOBILE SECTIONS
+  ----------------------------------------- */
 
   .section {
     padding: 65px 7vw;
@@ -489,6 +513,15 @@ footer a {
 
   .section-label {
     margin-bottom: 32px;
+    font-size: .64rem;
+  }
+
+  .story-grid,
+  .cause-card,
+  .fundraising-grid,
+  .race-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   h2 {
@@ -501,23 +534,34 @@ footer a {
     line-height: 1.65;
   }
 
-  .story-grid,
-  .cause-card,
-  .fundraising-grid,
-  .race-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
+
+  /* -----------------------------------------
+     NAVIGATION
+  ----------------------------------------- */
+
+  .wordmark,
+  .nav-link,
+  .eyebrow {
+    font-size: .64rem;
+  }
+
+  .nav-links {
+    gap: 15px;
   }
 
 
-  /* STORY */
+  /* -----------------------------------------
+     STORY
+  ----------------------------------------- */
 
   .story-grid {
     gap: 24px;
   }
 
 
-  /* CAUSE */
+  /* -----------------------------------------
+     CAUSE
+  ----------------------------------------- */
 
   .cause-card {
     padding: 28px;
@@ -525,7 +569,9 @@ footer a {
   }
 
 
-  /* FUNDRAISING */
+  /* -----------------------------------------
+     FUNDRAISING
+  ----------------------------------------- */
 
   .goal {
     font-size: 5.5rem;
@@ -541,7 +587,9 @@ footer a {
   }
 
 
-  /* TRAINING */
+  /* -----------------------------------------
+     TRAINING
+  ----------------------------------------- */
 
   .training-head {
     flex-direction: column;
@@ -594,14 +642,18 @@ footer a {
   }
 
 
-  /* RACE */
+  /* -----------------------------------------
+     RACE
+  ----------------------------------------- */
 
   .race-grid {
     gap: 24px;
   }
 
 
-  /* FOOTER */
+  /* -----------------------------------------
+     FOOTER
+  ----------------------------------------- */
 
   footer {
     flex-direction: column;
