@@ -709,3 +709,39 @@ footer a {
     gap: 15px;
   }
 }
+@media (max-width: 700px) {
+
+  .hero-donate,
+  .hero-training {
+    background: transparent !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 0 5px !important;
+
+    display: inline-block !important;
+
+    text-decoration: none !important;
+  }
+
+  .hero-donate {
+    border-bottom: 1px solid rgba(255,255,255,.7) !important;
+  }
+
+  .hero-training {
+    border-bottom: 1px solid rgba(255,255,255,.7) !important;
+  }
+
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+  }
+}
