@@ -1,11 +1,25 @@
 // Fundraising settings
 const GOAL = 2000;
 
-// Update this number as donations come in. We can automate this later if a usable fundraising-data source is available.
-const RAISED = 0;
+// Load the live total written by the GitHub Actions Haku updater.
+fetch("fundraising-data.json", { cache: "no-store" })
+  .then(response => {
+    if (!response.ok) throw new Error(`Fundraising data request failed: ${response.status}`);
+    return response.json();
+  })
+  .then(data => {
+    const raised = Number(data.raised) || 0;
+    const raisedEl = document.getElementById("raised");
+    const progressBar = document.getElementById("progress-bar");
 
-document.getElementById("raised").textContent = `$${RAISED.toLocaleString()}`;
-document.getElementById("progress-bar").style.width = `${Math.min((RAISED / GOAL) * 100, 100)}%`;
+    if (raisedEl) raisedEl.textContent = `$${raised.toLocaleString()}`;
+    if (progressBar) {
+      progressBar.style.width = `${Math.min((raised / GOAL) * 100, 100)}%`;
+    }
+  })
+  .catch(error => {
+    console.error("Could not load live fundraising data:", error);
+  });
 
 // Race countdown target: April 25, 2027
 const raceDate = new Date("2027-04-25T07:00:00-07:00");
