@@ -92,7 +92,7 @@ footer a { text-decoration: none; }
   .nav-eyebrow, .nav-links { display: none !important; }
   .hero-content { display: block !important; max-width: 100%; text-align: left; margin-top: auto; margin-bottom: auto; padding-bottom: 0; position: static; }
   .hero-content .eyebrow, .hero-content .intro { display: none; }
-  .hero h1 { text-align: left; max-width: 92%; font-size: clamp(3.6rem,15vw,5.2rem); line-height: .94; margin: 0 0 18px; }
+  .hero h1 { text-align: left; max-width: 92%; font-size: clamp(3.6rem,15vw,5.2rem); line-height: .94; margin: 0 0 24px; }
   .hero h1 em { margin: 0; padding: 0; }
   .hero-actions { position: absolute; right: 6vw; bottom: 32vw; z-index: 4; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; width: auto; margin: 0; }
   .hero-actions .button, .hero-actions .hero-text-link { width: auto; min-height: 0; margin: 0; gap: 8px; white-space: nowrap; }
@@ -103,7 +103,7 @@ footer a { text-decoration: none; }
   .hero-raised strong { font-size: 1.35rem; }
   .hero-raised span { margin-top: 4px; font-size: .52rem; letter-spacing: .1em; }
   .hero-number { font-size: 4.5rem; }
-  .hero-caption { margin-top: 10px; font-size: .62rem; letter-spacing: .1em; }
+  .hero-caption { margin-top: 24px; font-size: .62rem; letter-spacing: .1em; }
   .section { padding: 75px 7vw; }
   .story-grid, .cause-card, .fundraising-grid, .race-grid { grid-template-columns: 1fr; gap: 40px; }
   .cause-card { padding: 35px; }
