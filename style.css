@@ -60,6 +60,7 @@ h2 { font-family: "Playfair Display", serif; font-size: clamp(2.4rem, 5vw, 5.5re
 .body-copy { font-size: 1.05rem; line-height: 1.8; max-width: 620px; }
 .cause { background: var(--paper2); }
 .cause-card { padding: 60px; background: #f8f4eb; }
+.cause-card .text-link { display: inline-block; margin-top: 28px; }
 .fundraising-grid { align-items: end; }
 .goal { font-family: "Playfair Display", serif; font-size: clamp(5rem, 11vw, 10rem); line-height: .9; letter-spacing: -.06em; margin: 20px 0; }
 .muted { color: var(--muted); }
@@ -107,6 +108,7 @@ footer a { text-decoration: none; }
   .section { padding: 75px 7vw; }
   .story-grid, .cause-card, .fundraising-grid, .race-grid { grid-template-columns: 1fr; gap: 40px; }
   .cause-card { padding: 35px; }
+  .cause-card .text-link { margin-top: 24px; }
   .training-head { flex-direction: column; align-items: flex-start; gap: 24px; }
   .stats { grid-template-columns: 1fr; margin: 48px 0 35px; border-top: 1px solid rgba(255,255,255,.2); border-bottom: 0; }
   .stat, .stat:not(:first-child) { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.2); padding: 20px 0; }
