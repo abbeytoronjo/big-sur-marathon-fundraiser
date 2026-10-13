@@ -50,7 +50,7 @@ for item in items:
 
     # RUNALYZE puts the actual activity date inside content:encoded.
     date_match = re.search(
-        r"<b>Date</b>:\\s*(\\d{2}/\\d{2}/\\d{4})",
+        r"<b>Date</b>:\s*(\d{2}/\d{2}/\d{4})",
         content
     )
 
@@ -77,7 +77,7 @@ for item in items:
     distance = None
 
     match = re.search(
-        r"<b>Distance</b>:\\s*([\\d.,]+)&nbsp;mi",
+        r"<b>Distance</b>:\s*([\d.,]+)&nbsp;mi",
         content,
         re.IGNORECASE
     )
