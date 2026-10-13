@@ -29,6 +29,8 @@ items = [
     if element.tag.split("}")[-1] == "item"
 ]
 
+today = datetime.utcnow().date()
+
 for item in items:
     title = ""
     content = ""
@@ -48,7 +50,7 @@ for item in items:
 
     # RUNALYZE puts the actual activity date inside content:encoded.
     date_match = re.search(
-        r"<b>Date</b>:\s*(\d{2}/\d{2}/\d{4})",
+        r"<b>Date</b>:\\s*(\\d{2}/\\d{2}/\\d{4})",
         content
     )
 
@@ -63,6 +65,10 @@ for item in items:
     except ValueError:
         continue
 
+    # Ignore future-dated activities so they cannot inflate totals or appear as the latest run.
+    if activity_date > today:
+        continue
+
     # Only count activities from August 1, 2026 onward.
     if activity_date.isoformat() < START_DATE:
         continue
@@ -71,7 +77,7 @@ for item in items:
     distance = None
 
     match = re.search(
-        r"<b>Distance</b>:\s*([\d.,]+)&nbsp;mi",
+        r"<b>Distance</b>:\\s*([\\d.,]+)&nbsp;mi",
         content,
         re.IGNORECASE
     )
@@ -87,7 +93,7 @@ for item in items:
         })
 
 print(f"Found {len(items)} RSS activity items")
-print(f"Parsed {len(activities)} activities since {START_DATE}")
+print(f"Parsed {len(activities)} activities since {START_DATE}, excluding future dates")
 
 # Sort newest first.
 activities.sort(key=lambda x: x["date"], reverse=True)
