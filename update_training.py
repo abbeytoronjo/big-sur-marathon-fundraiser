@@ -153,7 +153,7 @@ except FileNotFoundError:
         "start_date": START_DATE,
         "baseline_miles": float(current_data["miles"]),
         "baseline_runs": int(current_data["runs"]),
-        "seen_keys": [activity_key(activity) for activity in already_included],
+        "seen_keys": [activity_key(activity) for activity in activities],
         "added_activities": newly_discovered,
         "baseline_latest_run": baseline_latest,
     }
