@@ -2,8 +2,9 @@ name: Update Training Data
 
 on:
   schedule:
-    # Run every day at 8:00 AM Central during daylight saving time
-    - cron: "0 13 * * *"
+    # Run every day at 9:00 AM Central, adjusting automatically for daylight saving time
+    - cron: "0 9 * * *"
+      timezone: "America/Chicago"
   workflow_dispatch:
 
 permissions:
