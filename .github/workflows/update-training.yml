@@ -28,7 +28,7 @@ jobs:
       - name: Commit updated training data and cumulative history
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add training-data.json training-history.json
           git diff --cached --quiet || git commit -m "Update cumulative training data"
 
