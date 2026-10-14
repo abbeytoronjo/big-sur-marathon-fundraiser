@@ -1,0 +1,33 @@
+{
+  "start_date": "2026-08-01",
+  "baseline_miles": 82.87,
+  "baseline_runs": 19,
+  "seen_keys": [
+    "[\"2026-10-14\",\"Running (Easy run): 00:32:29h - 6,47 km\",4.02]",
+    "[\"2026-10-13\",\"Running (Easy run): 00:23:48h - 4,85 km\",3.01]",
+    "[\"2026-10-12\",\"Running (Easy run): 00:41:00h - 8,12 km\",5.05]",
+    "[\"2026-10-11\",\"Running (Easy run): 00:29:45h - 5,64 km\",3.5]",
+    "[\"2026-09-24\",\"Running (Easy run): 00:55:24h - 10,64 km - Honolulu Running\",6.61]",
+    "[\"2026-09-23\",\"Running (Easy run): 00:13:32h - 3,24 km - College Station Running\",2.01]",
+    "[\"2026-09-19\",\"Running (Easy run): 00:23:49h - 4,92 km - College Station Running\",3.06]",
+    "[\"2026-09-11\",\"Running (Easy run): 00:32:08h - 6,47 km - College Station Running\",4.02]",
+    "[\"2026-09-10\",\"Running (Easy run): 00:48:01h - 9,78 km - College Station Running\",6.08]",
+    "[\"2026-09-08\",\"Running (Easy run): 00:41:01h - 8,07 km - College Station Running\",5.01]",
+    "[\"2026-09-07\",\"Running (Easy run): 00:57:18h - 11,52 km - Keller Running\",7.16]",
+    "[\"2026-09-05\",\"Running (Easy run): 00:23:57h - 4,85 km - College Station Running\",3.01]",
+    "[\"2026-09-04\",\"Running (Easy run): 00:39:27h - 8,08 km - College Station Running\",5.02]",
+    "[\"2026-09-02\",\"Running (Easy run): 00:25:23h - 4,97 km - College Station Running\",3.09]",
+    "[\"2026-08-23\",\"Running (Easy run): 00:24:35h - 4,83 km - Washington Running\",3.0]",
+    "[\"2026-08-21\",\"Running (Easy run): 00:54:40h - 11,36 km - Washington Running\",7.06]",
+    "[\"2026-08-20\",\"Running (Easy run): 00:24:51h - 5,01 km - College Station Running\",3.11]",
+    "[\"2026-08-19\",\"Running (Easy run): 00:31:44h - 6,49 km - College Station Running\",4.03]",
+    "[\"2026-08-18\",\"Running (Easy run): 00:40:07h - 8,08 km - College Station Running\",5.02]"
+  ],
+  "added_activities": [],
+  "baseline_latest_run": {
+    "date": "2026-10-14",
+    "title": "Running (Easy run): 00:32:29h - 6,47 km",
+    "distance": 4.02
+  },
+  "updated": "2026-10-14T20:42:07.963500Z"
+}
