@@ -98,7 +98,7 @@ for item in items:
         }
     )
 
-activities.sort(key=lambda activity: (activity["date"], activity["title"]), reverse=True)
+activities.sort(key=lambda activity: activity["date"], reverse=True)  # Stable sort preserves RSS order within each date.
 
 print(f"Found {len(items)} RSS activity items")
 print(f"Parsed {len(activities)} eligible activities since {START_DATE}")
@@ -113,23 +113,57 @@ if not activities:
 with open(DATA_FILE, "r", encoding="utf-8") as file:
     current_data = json.load(file)
 
-# Bootstrap a cumulative history from the site's existing totals. All activities
-# currently in the feed are marked as already included in that baseline, so the
-# first run of this version does not double-count them.
+# Bootstrap a cumulative history from the site's existing totals. Use the
+# existing latest-run entry as a boundary so activities published after the last
+# successful update are captured, while older feed entries are not double-counted.
 try:
     with open(HISTORY_FILE, "r", encoding="utf-8") as file:
         history = json.load(file)
     is_bootstrap = False
 except FileNotFoundError:
+    baseline_latest = current_data.get("latest_run")
+    baseline_latest_key = activity_key(baseline_latest) if baseline_latest else None
+    boundary_index = next(
+        (
+            index
+            for index, activity in enumerate(activities)
+            if activity_key(activity) == baseline_latest_key
+        ),
+        None,
+    )
+
+    if boundary_index is not None:
+        already_included = activities[boundary_index:]
+        newly_discovered = activities[:boundary_index]
+    else:
+        # If the exact boundary entry is no longer in the feed, fall back to
+        # dates newer than the stored latest run; do not recount same-day entries.
+        baseline_latest_date = baseline_latest.get("date") if baseline_latest else None
+        newly_discovered = [
+            activity for activity in activities
+            if baseline_latest_date and activity["date"] > baseline_latest_date
+        ]
+        newly_keys = {activity_key(activity) for activity in newly_discovered}
+        already_included = [
+            activity for activity in activities
+            if activity_key(activity) not in newly_keys
+        ]
+
     history = {
         "start_date": START_DATE,
         "baseline_miles": float(current_data["miles"]),
         "baseline_runs": int(current_data["runs"]),
-        "seen_keys": [activity_key(activity) for activity in activities],
-        "added_activities": [],
-        "baseline_latest_run": current_data.get("latest_run"),
+        "seen_keys": [activity_key(activity) for activity in already_included],
+        "added_activities": newly_discovered,
+        "baseline_latest_run": baseline_latest,
     }
     is_bootstrap = True
+
+    if newly_discovered:
+        print(
+            f"Captured {len(newly_discovered)} activity/activities added "
+            "since the previous successful update."
+        )
 
 if not is_bootstrap:
     seen_keys = set(history.get("seen_keys", []))
