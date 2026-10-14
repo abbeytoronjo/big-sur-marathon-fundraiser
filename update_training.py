@@ -11,14 +11,9 @@ HISTORY_FILE = "training-history.json"
 
 
 def activity_key(activity):
-    """Stable key used to avoid counting the same RSS activity more than once."""
+    """Stable de-duplication key based on date and miles, not the mutable title."""
     return json.dumps(
-        [
-            activity["date"],
-            activity["title"].strip(),
-            round(float(activity["distance"]), 2),
-        ],
-        ensure_ascii=False,
+        [activity["date"], round(float(activity["distance"]), 2)],
         separators=(",", ":"),
     )
 
@@ -76,7 +71,7 @@ for item in items:
     if activity_date > today or activity_date.isoformat() < START_DATE:
         continue
 
-    # RUNALYZE puts the distance inside content:encoded.
+    # RUNALYZE's public RSS feed reports distance in miles for this profile.
     distance_match = re.search(
         r"<b>Distance</b>:\s*([\d.,]+)&nbsp;mi",
         content,
@@ -98,7 +93,7 @@ for item in items:
         }
     )
 
-activities.sort(key=lambda activity: activity["date"], reverse=True)  # Stable sort preserves RSS order within each date.
+activities.sort(key=lambda activity: activity["date"], reverse=True)
 
 print(f"Found {len(items)} RSS activity items")
 print(f"Parsed {len(activities)} eligible activities since {START_DATE}")
@@ -113,84 +108,47 @@ if not activities:
 with open(DATA_FILE, "r", encoding="utf-8") as file:
     current_data = json.load(file)
 
-# Bootstrap a cumulative history from the site's existing totals. Use the
-# existing latest-run entry as a boundary so activities published after the last
-# successful update are captured, while older feed entries are not double-counted.
 try:
     with open(HISTORY_FILE, "r", encoding="utf-8") as file:
         history = json.load(file)
-    is_bootstrap = False
 except FileNotFoundError:
+    # Legacy fallback only. The committed history file is initialized from the
+    # full RUNALYZE CSV export, so this path should not be used in normal runs.
     baseline_latest = current_data.get("latest_run")
-    baseline_latest_key = activity_key(baseline_latest) if baseline_latest else None
-    boundary_index = next(
-        (
-            index
-            for index, activity in enumerate(activities)
-            if activity_key(activity) == baseline_latest_key
-        ),
-        None,
-    )
-
-    if boundary_index is not None:
-        already_included = activities[boundary_index:]
-        newly_discovered = activities[:boundary_index]
-    else:
-        # If the exact boundary entry is no longer in the feed, fall back to
-        # dates newer than the stored latest run; do not recount same-day entries.
-        baseline_latest_date = baseline_latest.get("date") if baseline_latest else None
-        newly_discovered = [
-            activity for activity in activities
-            if baseline_latest_date and activity["date"] > baseline_latest_date
-        ]
-        newly_keys = {activity_key(activity) for activity in newly_discovered}
-        already_included = [
-            activity for activity in activities
-            if activity_key(activity) not in newly_keys
-        ]
-
     history = {
         "start_date": START_DATE,
         "baseline_miles": float(current_data["miles"]),
         "baseline_runs": int(current_data["runs"]),
         "seen_keys": [activity_key(activity) for activity in activities],
-        "added_activities": newly_discovered,
+        "added_activities": [],
         "baseline_latest_run": baseline_latest,
     }
-    is_bootstrap = True
 
-    if newly_discovered:
+seen_keys = set(history.get("seen_keys", []))
+added_activities = list(history.get("added_activities", []))
+
+for activity in activities:
+    key = activity_key(activity)
+    if key not in seen_keys:
+        added_activities.append(activity)
+        seen_keys.add(key)
         print(
-            f"Captured {len(newly_discovered)} activity/activities added "
-            "since the previous successful update."
+            "Added new activity: "
+            f'{activity["date"]} — {activity["distance"]:.2f} mi — '
+            f'{activity["title"]}'
         )
 
-if not is_bootstrap:
-    seen_keys = set(history.get("seen_keys", []))
-    added_activities = list(history.get("added_activities", []))
+history["seen_keys"] = sorted(seen_keys)
+history["added_activities"] = added_activities
 
-    for activity in activities:
-        key = activity_key(activity)
-        if key not in seen_keys:
-            added_activities.append(activity)
-            seen_keys.add(key)
-            print(
-                "Added new activity: "
-                f'{activity["date"]} — {activity["distance"]:.2f} mi — '
-                f'{activity["title"]}'
-            )
-
-    history["seen_keys"] = sorted(seen_keys)
-    history["added_activities"] = added_activities
-
-# Totals now start from the existing baseline and add only newly discovered,
-# unique activities, so they keep growing even when older runs roll off the RSS feed.
+# The baseline is verified against the complete RUNALYZE CSV export. Each
+# subsequent unseen RSS activity is added once to the cumulative totals.
 baseline_miles = float(history["baseline_miles"])
 baseline_runs = int(history["baseline_runs"])
-added_activities = history.get("added_activities", [])
 
 total_miles = round(
-    baseline_miles + sum(float(activity["distance"]) for activity in added_activities),
+    baseline_miles
+    + sum(float(activity["distance"]) for activity in added_activities),
     2,
 )
 run_count = baseline_runs + len(added_activities)
