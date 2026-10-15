@@ -12,6 +12,7 @@ fetch("fundraising-data.json", { cache: "no-store" })
     const raisedEl = document.getElementById("raised");
     const progressBar = document.getElementById("progress-bar");
 
+    renderDonors(Array.isArray(data.donors) ? data.donors : [], raised);
     if (raisedEl) raisedEl.textContent = `$${raised.toLocaleString()}`;
     if (progressBar) {
       progressBar.style.width = `${Math.min((raised / GOAL) * 100, 100)}%`;
@@ -19,6 +20,7 @@ fetch("fundraising-data.json", { cache: "no-store" })
   })
   .catch(error => {
     console.error("Could not load live fundraising data:", error);
+    renderDonors([], 0);
   });
 
 // Race countdown target: April 25, 2027
@@ -73,3 +75,61 @@ fetch("training-data.json")
   .catch(error => {
     console.error("Could not load RUNALYZE training data:", error);
   });
+
+// Donor acknowledgement: gold course + numbered bibs.
+// Expects fundraising-data.json like: { "raised": 1000, "donors": [{ "name": "Sarah M.", "amount": 100 }, ...] }  (oldest first)
+function renderDonors(list, raised) {
+  const track = document.getElementById("course-track");
+  if (!track) return;
+  const prog = document.getElementById("course-progress");
+  const marks = document.getElementById("course-marks");
+  const wall = document.getElementById("bibs");
+  const NS = "http://www.w3.org/2000/svg";
+  const L = track.getTotalLength();
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const mk = (tag, attrs, text) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text) e.textContent = text;
+    return e;
+  };
+  marks.replaceChildren();
+  wall.replaceChildren();
+  const latest = [];
+  let cum = 0;
+  list.forEach((d, i) => {
+    cum += Number(d.amount) || 0;
+    const name = String(d.name || "").trim() || "Anonymous";
+    const p = track.getPointAtLength(L * clamp(cum / GOAL));
+    const isLatest = i >= list.length - 2;
+    if (isLatest) {
+      latest.push(`#${i + 1} ${name}`);
+      const up = i % 2 === 0, w = 104, sy = up ? p.y - 52 : p.y + 26;
+      const sx = Math.max(4, Math.min(676 - w, p.x - w / 2));
+      marks.appendChild(mk("line", { class: "course-stem", x1: p.x, y1: p.y, x2: p.x, y2: up ? sy + 24 : sy }));
+      marks.appendChild(mk("rect", { class: "course-sign", x: sx, y: sy, width: w, height: 24, rx: 4 }));
+      marks.appendChild(mk("text", { class: "course-text", x: sx + w / 2, y: sy + 16, "text-anchor": "middle" }, `#${i + 1} ${name}`.slice(0, 16)));
+    }
+    marks.appendChild(mk("circle", { class: "course-dot", cx: p.x, cy: p.y, r: isLatest ? 6 : 4.5 }));
+    const bib = document.createElement("div");
+    bib.className = "bib";
+    const s = document.createElement("small"); s.textContent = "Big Sur 2027";
+    const b = document.createElement("b"); b.textContent = `#${i + 1}`;
+    const n = document.createElement("span"); n.textContent = name;
+    bib.append(s, b, n);
+    wall.appendChild(bib);
+  });
+  const frac = clamp(raised / GOAL);
+  prog.style.display = frac > 0 ? "" : "none";
+  prog.setAttribute("stroke-dasharray", `${L * frac} ${L}`);
+  const empty = document.createElement("div");
+  empty.className = "bib bib-empty";
+  empty.textContent = "Your name here";
+  wall.appendChild(empty);
+  const count = list.length;
+  if (count > 0) {
+    document.getElementById("donors-title").textContent = `Carried by ${count} ${count === 1 ? "person" : "people"} so far.`;
+    document.getElementById("donors-sub").textContent = `$${raised.toLocaleString()} raised, mile ${(frac * 26.2).toFixed(1)} of 26.2`;
+    document.getElementById("course-latest").textContent = `Latest: ${latest.reverse().join(", ")}`;
+  }
+}
