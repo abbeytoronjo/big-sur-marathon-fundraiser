@@ -25,14 +25,26 @@ fetch("fundraising-data.json", { cache: "no-store" })
 const raceDate = new Date("2027-04-25T07:00:00-07:00");
 
 function updateCountdown() {
-  const now = new Date();
-  const diff = raceDate - now;
-  const days = Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
-  const el = document.getElementById("countdown-days");
-  if (el) el.textContent = days.toLocaleString();
+  const diff = Math.max(0, raceDate.getTime() - Date.now());
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  const values = {
+    "countdown-days": days.toLocaleString(),
+    "countdown-hours": String(hours).padStart(2, "0"),
+    "countdown-minutes": String(minutes).padStart(2, "0"),
+    "countdown-seconds": String(seconds).padStart(2, "0")
+  };
+  Object.entries(values).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  });
 }
 updateCountdown();
-setInterval(updateCountdown, 60 * 60 * 1000);
+setInterval(updateCountdown, 1000);
 
 // RUNALYZE training stats
 fetch("training-data.json")
