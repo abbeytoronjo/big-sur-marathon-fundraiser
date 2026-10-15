@@ -45,9 +45,27 @@
       </div>
 
       <div class="hero-bottom">
-        <div>
-          <span class="hero-number" id="countdown-days">—</span>
-          <span class="hero-caption">days until race day</span>
+        <div class="countdown" aria-label="Countdown to the Big Sur International Marathon">
+          <div class="countdown-unit">
+            <span class="hero-number" id="countdown-days">—</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <span class="countdown-separator" aria-hidden="true">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="countdown-hours">—</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <span class="countdown-separator" aria-hidden="true">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="countdown-minutes">—</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <span class="countdown-separator" aria-hidden="true">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="countdown-seconds">—</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+          <span class="hero-caption countdown-caption">until race day</span>
         </div>
         <div class="hero-raised">
           <strong>$2,000</strong>
