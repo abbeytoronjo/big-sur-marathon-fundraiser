@@ -76,7 +76,7 @@ fetch("training-data.json")
 
 // Donor acknowledgement: gold course + numbered bibs.
 // Donor names come from donors.json (hand-edited, oldest first). The raised total comes from fundraising-data.json.
-function renderDonors(list, raised) {
+function renderDonors(list, raised, autoCount = 0) {
   const track = document.getElementById("course-track");
   if (!track) return;
   const prog = document.getElementById("course-progress");
@@ -125,11 +125,11 @@ function renderDonors(list, raised) {
   empty.className = "bib bib-empty";
   empty.textContent = "Your name here";
   wall.appendChild(empty);
-  const count = list.length;
+  const count = Math.max(list.length, autoCount);
   if (count > 0) {
     document.getElementById("donors-title").textContent = `Cheered on by ${count} ${count === 1 ? "person" : "people"} so far.`;
     document.getElementById("donors-sub").textContent = `$${raised.toLocaleString()} raised, mile ${(frac * 26.2).toFixed(1)} of 26.2`;
-    document.getElementById("course-latest").textContent = `Latest: ${latest.reverse().join(", ")}`;
+    if (latest.length) document.getElementById("course-latest").textContent = `Latest: ${latest.reverse().join(", ")}`;
   }
 }
 
@@ -149,5 +149,6 @@ Promise.allSettled([
   const list = Array.isArray(raw) ? raw : (raw && Array.isArray(raw.donors) ? raw.donors : []);
   const listed = list.reduce((sum, d) => sum + amountOf(typeof d === "string" ? {} : d), 0);
   const live = fund.status === "fulfilled" ? Number(fund.value.raised) || 0 : 0;
-  renderDonors(list, Math.max(live, listed));
+  const auto = fund.status === "fulfilled" ? Number(fund.value.donor_count) || 0 : 0;
+  renderDonors(list, Math.max(live, listed), auto);
 });
