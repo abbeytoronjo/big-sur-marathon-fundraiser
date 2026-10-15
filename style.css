@@ -1,211 +1,76 @@
-:root {
-  --ink: #16231f;
-  --muted: #63706b;
-  --paper: #f5f1e8;
-  --paper2: #ebe5d8;
-  --accent: #9b6a43;
-  --line: rgba(22,35,31,.18);
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: "DM Sans", sans-serif; }
-a { color: inherit; }
-
-.hero {
-  min-height: 100vh;
-  position: relative;
-  padding: 16px 5vw 6vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background:
-    linear-gradient(90deg, rgba(12,24,21,.55) 0%, rgba(12,24,21,.18) 48%, rgba(12,24,21,.03) 100%),
-    url("hero.jpg") center top / cover;
-  color: white;
-}
-
-nav { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
-.wordmark, .nav-link, .eyebrow, .section-label, .nav-eyebrow { font-size: .72rem; letter-spacing: .14em; font-weight: 700; }
-.nav-eyebrow { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 18px; margin: 0; background: var(--ink); color: white; text-align: center; white-space: nowrap; line-height: 1; }
-.nav-links { display: flex; gap: 10px; align-items: center; }
-.nav-link { display: inline-flex; align-items: center; justify-content: center; min-width: 100px; height: 40px; color: var(--ink); background: white; text-decoration: none; border: 1px solid rgba(255,255,255,.9); box-shadow: 0 6px 18px rgba(0,0,0,.12); }
-
-@media (min-width: 701px) {
-  .hero > nav { position: relative; padding-top: 0; }
-  .nav-eyebrow { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); }
-}
-
-.hero-content { max-width: 900px; padding-bottom: 3vw; text-align: left; position: relative; z-index: 2; }
-.hero-content .eyebrow { text-align: center; }
-.hero h1 { font-family: "Playfair Display", serif; font-size: clamp(3.5rem, 8vw, 8.5rem); line-height: .92; letter-spacing: -.05em; margin: 18px 0 28px; text-align: left; }
-.hero h1 em { font-weight: 500; margin: 0; padding: 0; }
-.intro { max-width: 600px; font-size: 1.15rem; line-height: 1.6; padding: 14px 18px; background: rgba(12,24,21,.38); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
-
-.hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; }
-.button { display: inline-flex; align-items: center; justify-content: center; gap: 28px; height: 50px; padding: 0 21px; margin-top: 0; background: white; color: var(--ink); text-decoration: none; font-weight: 700; font-size: .85rem; box-shadow: 0 8px 24px rgba(0,0,0,.16); }
-.hero-text-link { display: inline-flex; align-items: center; justify-content: center; gap: 28px; height: 50px; padding: 0 21px; background: white; color: var(--ink); text-decoration: none; font-weight: 700; font-size: .85rem; border: 0; box-shadow: 0 8px 24px rgba(0,0,0,.16); }
-
-.hero-bottom { display: flex; justify-content: space-between; align-items: end; gap: 30px; position: relative; z-index: 2; }
-.hero-number { display: block; font-family: "Playfair Display", serif; font-size: clamp(3.8rem, 7vw, 7rem); line-height: .85; letter-spacing: -.05em; }
-.hero-caption, .hero-raised span { display: block; margin-top: 24px; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
-.hero-raised { text-align: center; padding: 18px 22px; background: rgba(12,24,21,.42); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
-.hero-raised strong { display: block; font-family: "Playfair Display", serif; font-size: 2rem; font-weight: 600; text-align: center; }
-.hero-raised span { text-align: center; }
-
-.section { padding: 110px 8vw; border-bottom: 1px solid var(--line); }
-.section-label { color: var(--muted); margin-bottom: 55px; }
-.story-grid, .cause-card, .fundraising-grid, .race-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 8vw; }
-h2 { font-family: "Playfair Display", serif; font-size: clamp(2.4rem, 5vw, 5.5rem); line-height: .98; letter-spacing: -.04em; margin: 0; }
-.body-copy { font-size: 1.05rem; line-height: 1.8; max-width: 620px; }
-.cause { background: var(--paper2); }
-.cause-card { padding: 60px; background: #f8f4eb; }
-.cause-card .text-link { display: inline-block; margin-top: 28px; }
-.fundraising-grid { align-items: end; }
-.goal { font-family: "Playfair Display", serif; font-size: clamp(5rem, 11vw, 10rem); line-height: .9; letter-spacing: -.06em; margin: 20px 0; }
-.muted { color: var(--muted); }
-.progress-wrap { padding-bottom: 12px; }
-.progress { height: 14px; background: rgba(22,35,31,.12); overflow: hidden; }
-.progress > div { height: 100%; width: 0%; background: var(--ink); transition: width .8s ease; }
-.progress-meta { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: .9rem; }
-.progress-meta.small { margin-top: 12px; color: var(--muted); }
-.tiny { color: var(--muted); font-size: .72rem; line-height: 1.5; }
-.training { background: var(--ink); color: white; }
-.training .section-label, .training .muted { color: #b9c1bc; }
-.training-head { display: flex; justify-content: space-between; gap: 40px; align-items: end; }
-.text-link { font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.5); padding-bottom: 6px; }
-.stats { display: grid; grid-template-columns: repeat(3,1fr); margin: 70px 0 45px; border-top: 1px solid rgba(255,255,255,.2); border-bottom: 1px solid rgba(255,255,255,.2); }
-.stat { padding: 35px 25px 35px 0; border-right: 1px solid rgba(255,255,255,.2); }
-.stat:not(:first-child) { padding-left: 25px; }
-.stat:last-child { border: 0; }
-.stat strong { display: block; font-family: "Playfair Display", serif; font-size: clamp(2.5rem,5vw,5rem); }
-.stat span { color: #b9c1bc; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
-.strava-placeholder { border: 1px solid rgba(255,255,255,.2); padding: 40px; max-width: 850px; }
-.strava-placeholder h3 { font-family: "Playfair Display", serif; font-size: 2rem; margin: 12px 0; }
-.race { background: #d9e1dc; }
-footer { display: flex; justify-content: space-between; padding: 35px 5vw; font-size: .7rem; letter-spacing: .12em; font-weight: 700; }
-footer a { text-decoration: none; }
-
-@media (max-width: 700px) {
-  .hero { min-height: 100svh; padding: 64px 6vw 10vw; background-position: center 20%; }
-  .hero::before { content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027"; position: absolute; top: 0; left: 0; z-index: 10; height: 42px; width: 100%; display: flex; align-items: center; justify-content: center; background: var(--ink); color: white; font-size: .58rem; font-weight: 700; letter-spacing: .07em; white-space: nowrap; }
-  nav { gap: 0; }
-  .nav-eyebrow, .nav-links { display: none !important; }
-  .hero-content { display: block !important; max-width: 100%; text-align: left; margin-top: auto; margin-bottom: auto; padding-bottom: 0; position: static; }
-  .hero-content .eyebrow, .hero-content .intro { display: none; }
-  .hero h1 { text-align: left; max-width: 92%; font-size: clamp(3.6rem,15vw,5.2rem); line-height: .94; margin: 0 0 24px; }
-  .hero h1 em { margin: 0; padding: 0; }
-  .hero-actions { position: absolute; right: 6vw; bottom: 32vw; z-index: 4; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; width: auto; margin: 0; }
-  .hero-actions .button, .hero-actions .hero-text-link { width: auto; min-height: 0; margin: 0; gap: 8px; white-space: nowrap; }
-  .hero-actions .hero-donate { height: 44px; padding: 0 16px; background: white; color: var(--ink); border: 1px solid rgba(255,255,255,.95); box-shadow: 0 6px 18px rgba(0,0,0,.18); }
-  .hero-actions .hero-training { height: auto; padding: 0 0 4px; background: transparent; color: white; border: 0; border-bottom: 1px solid rgba(255,255,255,.75); box-shadow: none; }
-  .hero-bottom { justify-content: space-between; align-items: flex-end; gap: 18px; width: 100%; }
-  .hero-raised { display: block; padding: 9px 12px 10px; min-width: 108px; background: rgba(12,24,21,.48); }
-  .hero-raised strong { font-size: 1.35rem; }
-  .hero-raised span { margin-top: 4px; font-size: .52rem; letter-spacing: .1em; }
-  .hero-number { font-size: 4.5rem; }
-  .hero-caption { margin-top: 18px; font-size: .62rem; letter-spacing: .1em; }
-  .section { padding: 75px 7vw; }
-  .story-grid, .cause-card, .fundraising-grid, .race-grid { grid-template-columns: 1fr; gap: 40px; }
-  .cause-card { padding: 35px; }
-  .cause-card .text-link { margin-top: 24px; }
-  .training-head { flex-direction: column; align-items: flex-start; gap: 24px; }
-  .stats { grid-template-columns: 1fr; margin: 48px 0 35px; border-top: 1px solid rgba(255,255,255,.2); border-bottom: 0; }
-  .stat, .stat:not(:first-child) { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.2); padding: 20px 0; }
-  .stat strong { font-size: 3.1rem; line-height: .9; flex: 0 0 auto; }
-  .stat span { max-width: 48%; text-align: right; line-height: 1.35; }
-  .strava-placeholder { padding: 28px 24px; }
-  .strava-placeholder h3 { font-size: 1.75rem; }
-  footer { flex-direction: column; gap: 15px; }
-}
-
-/* Live race countdown */
-.countdown {
-  display: flex;
-  align-items: flex-start;
-  gap: clamp(8px, 1.5vw, 22px);
-  flex-wrap: wrap;
-  max-width: 760px;
-}
-.countdown-unit { display: flex; flex-direction: column; min-width: 66px; }
-.countdown-number {
-  display: block;
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.6rem, 5.4vw, 5.2rem);
-  line-height: .85;
-  letter-spacing: -.045em;
-  font-variant-numeric: tabular-nums;
-}
-.countdown-label {
-  display: block;
-  margin-top: 13px;
-  font-size: .62rem;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: rgba(255,255,255,.82);
-}
-.countdown-separator {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.3rem, 4.5vw, 4.3rem);
-  line-height: .8;
-  color: rgba(255,255,255,.68);
-}
-.countdown-caption {
-  flex-basis: 100%;
-  margin-top: 7px;
-}
-
-/* Keep the countdown tidy on phones: four equal columns, no wrapping punctuation. */
+/* Mobile countdown layout: prevent iOS Safari from squeezing grid content */
 @media (max-width: 700px) {
   .hero-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
+    display: block;
+    width: 100%;
   }
+
   .countdown {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    align-items: start;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
     gap: 0;
     width: 100%;
-    max-width: none;
-  }
-  .countdown-unit {
+    max-width: 100%;
     min-width: 0;
-    align-items: center;
-    text-align: center;
   }
+
+  .countdown-unit {
+    flex: 1 1 25%;
+    min-width: 0;
+    align-items: flex-start;
+    text-align: left;
+  }
+
   .countdown .hero-number,
   .countdown-number {
-    font-size: clamp(1.85rem, 9vw, 2.65rem);
-    line-height: .95;
+    font-size: clamp(1.65rem, 7.8vw, 2.5rem);
+    line-height: 1;
     letter-spacing: -.04em;
     white-space: nowrap;
   }
-  .countdown-separator { display: none; }
+
+  .countdown-separator {
+    display: none;
+  }
+
   .countdown-label {
-    margin-top: 8px;
-    font-size: .46rem;
-    letter-spacing: .07em;
+    margin-top: 9px;
+    font-size: clamp(.42rem, 1.9vw, .55rem);
+    letter-spacing: .04em;
     white-space: nowrap;
   }
+
   .countdown-caption {
-    grid-column: 1 / -1;
-    margin-top: 12px;
-    text-align: left;
+    flex: 0 0 100%;
+    margin-top: 13px;
     font-size: .56rem;
+    letter-spacing: .1em;
+    white-space: nowrap;
   }
+
   .hero-bottom .hero-raised {
-    align-self: flex-end;
+    display: inline-block;
+    margin-top: 18px;
+    float: right;
   }
-  .hero-actions { bottom: 205px; }
+
+  .hero-actions {
+    bottom: 205px;
+  }
 }
 
 @media (max-width: 360px) {
   .countdown .hero-number,
-  .countdown-number { font-size: 1.7rem; }
-  .countdown-label { font-size: .42rem; letter-spacing: .04em; }
-  .hero-actions { bottom: 195px; }
+  .countdown-number {
+    font-size: 1.55rem;
+  }
+  .countdown-label {
+    font-size: .4rem;
+    letter-spacing: .025em;
+  }
+  .hero-actions {
+    bottom: 195px;
+  }
 }
