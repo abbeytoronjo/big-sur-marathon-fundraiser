@@ -96,8 +96,9 @@ function renderDonors(list, raised) {
   const latest = [];
   let cum = 0;
   list.forEach((d, i) => {
-    cum += Number(d.amount) || 0;
-    const name = String(d.name || "").trim() || "Anonymous";
+    const entry = typeof d === "string" ? { name: d } : (d || {});
+    cum += amountOf(entry);
+    const name = String(entry.name || "").trim() || "Anonymous";
     const p = track.getPointAtLength(L * clamp(cum / GOAL));
     const isLatest = i >= list.length - 2;
     if (isLatest) {
@@ -126,20 +127,27 @@ function renderDonors(list, raised) {
   wall.appendChild(empty);
   const count = list.length;
   if (count > 0) {
-    document.getElementById("donors-title").textContent = `Carried by ${count} ${count === 1 ? "person" : "people"} so far.`;
+    document.getElementById("donors-title").textContent = `Cheered on by ${count} ${count === 1 ? "person" : "people"} so far.`;
     document.getElementById("donors-sub").textContent = `$${raised.toLocaleString()} raised, mile ${(frac * 26.2).toFixed(1)} of 26.2`;
     document.getElementById("course-latest").textContent = `Latest: ${latest.reverse().join(", ")}`;
   }
 }
 
+// Dollar amount from an entry; tolerates "$100", "100", or a missing amount.
+function amountOf(entry) {
+  return Number(String(entry && entry.amount != null ? entry.amount : 0).replace(/[^0-9.]/g, "")) || 0;
+}
+
 // Load the hand-edited donor list and the live total, then draw the section.
-// If either file is missing or broken, the section falls back gracefully.
+// donors.json can be a plain list, or { "donors": [...] }. Names alone are fine.
 Promise.allSettled([
   fetch("fundraising-data.json", { cache: "no-store" }).then(r => r.json()),
   fetch("donors.json", { cache: "no-store" }).then(r => r.json())
 ]).then(([fund, donors]) => {
-  const list = donors.status === "fulfilled" && Array.isArray(donors.value) ? donors.value : [];
-  const listed = list.reduce((sum, d) => sum + (Number(d.amount) || 0), 0);
+  if (donors.status !== "fulfilled") console.error("Could not read donors.json (check for typos in the file):", donors.reason);
+  const raw = donors.status === "fulfilled" ? donors.value : [];
+  const list = Array.isArray(raw) ? raw : (raw && Array.isArray(raw.donors) ? raw.donors : []);
+  const listed = list.reduce((sum, d) => sum + amountOf(typeof d === "string" ? {} : d), 0);
   const live = fund.status === "fulfilled" ? Number(fund.value.raised) || 0 : 0;
   renderDonors(list, Math.max(live, listed));
 });
