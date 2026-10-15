@@ -1,131 +1,117 @@
+/* Abbey Runs Big Sur: one palette, one button, one label style, one section rhythm. */
 :root {
-  --ink: #16231f;
-  --muted: #63706b;
-  --paper: #f5f1e8;
-  --paper2: #ebe5d8;
-  --accent: #9b6a43;
-  --line: rgba(22,35,31,.18);
+  --ink: #10242a;       /* deep Pacific */
+  --fog: #eef2f0;       /* coastal fog */
+  --glass: #d3e0dc;     /* sea glass */
+  --gold: #e3a62f;      /* hillside gold: the only accent, used for donating */
+  --muted: #55676a;
+  --line: rgba(16,36,42,.18);
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", system-ui, sans-serif;
+  --pad: clamp(24px, 7vw, 120px);
+  --hero-shade: linear-gradient(180deg, rgba(8,22,27,.45) 0%, rgba(8,22,27,.1) 35%, rgba(8,22,27,.78) 100%);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: "DM Sans", sans-serif; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--fog); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
 a { color: inherit; }
-.hero {
-  min-height: 100vh; position: relative; padding: 16px 5vw 6vw;
-  display: flex; flex-direction: column; justify-content: space-between;
-  background: linear-gradient(90deg, rgba(12,24,21,.55) 0%, rgba(12,24,21,.18) 48%, rgba(12,24,21,.03) 100%), url("hero.jpg") center top / cover;
-  color: white;
-}
-nav { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
-.wordmark, .nav-link, .eyebrow, .section-label, .nav-eyebrow { font-size: .72rem; letter-spacing: .14em; font-weight: 700; }
-.nav-eyebrow { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 18px; margin: 0; background: var(--ink); color: white; text-align: center; white-space: nowrap; line-height: 1; }
-.nav-links { display: flex; gap: 10px; align-items: center; }
-.nav-link { display: inline-flex; align-items: center; justify-content: center; min-width: 100px; height: 40px; color: var(--ink); background: white; text-decoration: none; border: 1px solid rgba(255,255,255,.9); box-shadow: 0 6px 18px rgba(0,0,0,.12); }
-@media (min-width: 701px) {
-  .hero > nav { position: relative; padding-top: 0; }
-  .nav-eyebrow { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); }
-}
-.hero-content { max-width: 900px; padding-bottom: 3vw; text-align: left; position: relative; z-index: 2; }
-.hero-content .eyebrow { text-align: center; }
-.hero h1 { font-family: "Playfair Display", serif; font-size: clamp(3.5rem, 8vw, 8.5rem); line-height: .92; letter-spacing: -.05em; margin: 18px 0 28px; text-align: left; }
-.hero h1 em { font-weight: 500; margin: 0; padding: 0; }
-.intro { max-width: 600px; font-size: 1.15rem; line-height: 1.6; padding: 14px 18px; background: rgba(12,24,21,.38); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
-.hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; }
-.button { display: inline-flex; align-items: center; justify-content: center; gap: 28px; height: 50px; padding: 0 21px; margin-top: 0; background: white; color: var(--ink); text-decoration: none; font-weight: 700; font-size: .85rem; box-shadow: 0 8px 24px rgba(0,0,0,.16); }
-.hero-text-link { display: inline-flex; align-items: center; justify-content: center; gap: 28px; height: 50px; padding: 0 21px; background: white; color: var(--ink); text-decoration: none; font-weight: 700; font-size: .85rem; border: 0; box-shadow: 0 8px 24px rgba(0,0,0,.16); }
-.hero-bottom { display: flex; justify-content: space-between; align-items: end; gap: 30px; position: relative; z-index: 2; }
-.hero-number { display: block; font-family: "Playfair Display", serif; font-size: clamp(3.8rem, 7vw, 7rem); line-height: .85; letter-spacing: -.05em; }
-.hero-caption, .hero-raised span { display: block; margin-top: 24px; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
-.hero-raised { text-align: center; padding: 18px 22px; background: rgba(12,24,21,.42); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
-.hero-raised strong { display: block; font-family: "Playfair Display", serif; font-size: 2rem; font-weight: 600; text-align: center; }
-.hero-raised span { text-align: center; }
-.section { padding: 110px 8vw; border-bottom: 1px solid var(--line); }
-.section-label { color: var(--muted); margin-bottom: 55px; }
-.story-grid, .cause-card, .fundraising-grid, .race-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 8vw; }
-h2 { font-family: "Playfair Display", serif; font-size: clamp(2.4rem, 5vw, 5.5rem); line-height: .98; letter-spacing: -.04em; margin: 0; }
-.body-copy { font-size: 1.05rem; line-height: 1.8; max-width: 620px; }
-.cause { background: var(--paper2); }
-.cause-card { padding: 60px; background: #f8f4eb; }
-.cause-card .text-link { display: inline-block; margin-top: 28px; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+/* Type scale */
+h1, h2, h3, .goal, .countdown-number, .stat strong, .hero-raised strong { font-family: var(--serif); font-weight: 600; letter-spacing: -.03em; }
+h2 { font-size: clamp(2.2rem, 4.6vw, 4.2rem); line-height: 1.04; margin: 0; }
+h3 { font-size: 1.7rem; margin: 0 0 12px; }
+.body-copy { font-size: 1.08rem; line-height: 1.75; max-width: 60ch; }
+.body-copy p { margin: 0 0 1.1em; }
+.section-label { display: flex; align-items: center; gap: 14px; margin-bottom: 48px; font-size: .9rem; font-weight: 600; color: var(--muted); }
+.section-label::before { content: ""; width: 36px; height: 2px; background: var(--gold); }
+.eyebrow { margin: 0 0 14px; font-size: .95rem; font-weight: 600; color: var(--muted); }
+.muted, .tiny { color: var(--muted); }
+.tiny { font-size: .8rem; line-height: 1.5; }
+
+/* Actions: one primary button, one quiet link */
+.button { display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 30px; background: var(--gold); color: var(--ink); font-weight: 700; font-size: 1rem; text-decoration: none; border: 2px solid var(--gold); transition: background .2s, color .2s; }
+.button:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.text-link, .hero-text-link { font-weight: 600; text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: 3px; }
+.text-link:hover, .hero-text-link:hover { color: var(--gold); }
+
+/* Hero */
+.hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 20px var(--pad) 40px; color: #fff; background: var(--hero-shade), url("hero.jpg") center / cover; }
+nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 24px; }
+.wordmark { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; }
+.nav-eyebrow { order: 3; width: 100%; font-size: .95rem; opacity: .92; }
+.nav-links { display: flex; align-items: center; gap: 22px; }
+.nav-link { font-weight: 600; text-decoration: none; }
+.nav-link:hover { color: var(--gold); }
+.nav-donate { padding: 9px 20px; background: var(--gold); color: var(--ink); }
+.nav-donate:hover { background: #fff; color: var(--ink); }
+.hero-content { max-width: 880px; }
+.hero h1 { font-size: clamp(3.4rem, 8.5vw, 8rem); line-height: .95; letter-spacing: -.045em; margin: 0 0 24px; }
+.hero h1 em { font-weight: 500; }
+.intro { max-width: 34em; margin: 0 0 32px; font-size: 1.25rem; line-height: 1.55; }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 28px; }
+.hero-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.35); }
+.countdown { display: flex; align-items: flex-start; gap: clamp(10px, 2vw, 26px); flex-wrap: wrap; }
+.countdown-unit { display: flex; flex-direction: column; min-width: 64px; }
+.countdown-number { font-size: clamp(2.4rem, 5vw, 4.6rem); line-height: .9; font-variant-numeric: tabular-nums; }
+.countdown-label, .hero-raised span { margin-top: 8px; font-size: .85rem; font-weight: 600; opacity: .85; }
+.countdown-separator { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.8rem); line-height: .85; opacity: .55; }
+.countdown-caption { flex-basis: 100%; margin: 0; font-size: .85rem; font-weight: 600; opacity: .85; }
+.hero-raised { text-align: right; }
+.hero-raised strong { display: block; font-size: clamp(2rem, 4vw, 3.4rem); line-height: .95; }
+.hero-raised span { display: block; }
+
+/* Sections: fog, glass, fog, ink, glass */
+.section { padding: clamp(72px, 10vw, 130px) var(--pad); }
+.story-grid, .cause-card, .fundraising-grid, .race-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 8vw, 110px); }
+.cause, .race { background: var(--glass); }
+.cause-card .text-link { display: inline-block; margin-top: 26px; }
 .fundraising-grid { align-items: end; }
-.goal { font-family: "Playfair Display", serif; font-size: clamp(5rem, 11vw, 10rem); line-height: .9; letter-spacing: -.06em; margin: 20px 0; }
-.muted { color: var(--muted); }
-.progress-wrap { padding-bottom: 12px; }
-.progress { height: 14px; background: rgba(22,35,31,.12); overflow: hidden; }
-.progress > div { height: 100%; width: 0%; background: var(--ink); transition: width .8s ease; }
-.progress-meta { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: .9rem; }
-.progress-meta.small { margin-top: 12px; color: var(--muted); }
-.tiny { color: var(--muted); font-size: .72rem; line-height: 1.5; }
-.training { background: var(--ink); color: white; }
-.training .section-label, .training .muted { color: #b9c1bc; }
-.training-head { display: flex; justify-content: space-between; gap: 40px; align-items: end; }
-.text-link { font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.5); padding-bottom: 6px; }
-.stats { display: grid; grid-template-columns: repeat(3,1fr); margin: 70px 0 45px; border-top: 1px solid rgba(255,255,255,.2); border-bottom: 1px solid rgba(255,255,255,.2); }
-.stat { padding: 35px 25px 35px 0; border-right: 1px solid rgba(255,255,255,.2); }
-.stat:not(:first-child) { padding-left: 25px; }
-.stat:last-child { border: 0; }
-.stat strong { display: block; font-family: "Playfair Display", serif; font-size: clamp(2.5rem,5vw,5rem); }
-.stat span { color: #b9c1bc; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
-.strava-placeholder { border: 1px solid rgba(255,255,255,.2); padding: 40px; max-width: 850px; }
-.strava-placeholder h3 { font-family: "Playfair Display", serif; font-size: 2rem; margin: 12px 0; }
-.race { background: #d9e1dc; }
-footer { display: flex; justify-content: space-between; padding: 35px 5vw; font-size: .7rem; letter-spacing: .12em; font-weight: 700; }
-footer a { text-decoration: none; }
+.goal { font-size: clamp(5rem, 11vw, 9.5rem); line-height: .9; letter-spacing: -.05em; margin: 4px 0 18px; }
+.fundraising .button { margin-top: 24px; }
+.progress { height: 14px; background: var(--line); overflow: hidden; }
+.progress > div { height: 100%; width: 0%; background: var(--gold); transition: width .8s ease; }
+.progress-meta { display: flex; justify-content: space-between; margin-bottom: 12px; }
+.progress-meta strong { font-family: var(--serif); font-size: 2rem; line-height: 1; }
+.progress-meta.small { margin: 12px 0 0; color: var(--muted); font-size: .9rem; }
+
+/* Training */
+.training { background: var(--ink); color: #fff; }
+.training .section-label { color: #b4c4c4; }
+.training-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); margin: 64px 0 40px; border-top: 1px solid rgba(255,255,255,.22); border-bottom: 1px solid rgba(255,255,255,.22); }
+.stat { padding: 32px 24px 32px 0; border-right: 1px solid rgba(255,255,255,.22); }
+.stat:not(:first-child) { padding-left: 24px; }
+.stat:last-child { border-right: 0; }
+.stat strong { display: block; font-size: clamp(2.5rem, 5vw, 4.6rem); line-height: 1; }
+.stat span { color: #b4c4c4; font-size: .9rem; }
+.training-note { max-width: 720px; }
+.training-note p { color: #d6e0e0; }
+.training-note .eyebrow { color: #b4c4c4; }
+
+footer { display: flex; justify-content: space-between; gap: 16px; padding: 32px var(--pad); background: var(--ink); color: #d6e0e0; font-size: .9rem; }
+footer a { text-decoration: none; font-weight: 600; }
+footer a:hover { color: var(--gold); }
 
 @media (max-width: 700px) {
-  .hero { min-height: 100svh; padding: 64px 6vw 10vw; background-position: center 20%; }
-  .hero::before { content: "BIG SUR INTERNATIONAL MARATHON 2027  ·  APRIL 25, 2027"; position: absolute; top: 0; left: 0; z-index: 10; height: 42px; width: 100%; display: flex; align-items: center; justify-content: center; background: var(--ink); color: white; font-size: .58rem; font-weight: 700; letter-spacing: .07em; white-space: nowrap; }
-  nav { gap: 0; }
-  .nav-eyebrow, .nav-links { display: none !important; }
-  .hero-content { display: block !important; max-width: 100%; text-align: left; margin-top: auto; margin-bottom: auto; padding-bottom: 0; position: static; }
-  .hero-content .eyebrow, .hero-content .intro { display: none; }
-  .hero h1 { text-align: left; max-width: 92%; font-size: clamp(3.6rem,15vw,5.2rem); line-height: .94; margin: 0 0 24px; }
-  .hero h1 em { margin: 0; padding: 0; }
-  .hero-actions { position: absolute; right: 6vw; bottom: 32vw; z-index: 4; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; width: auto; margin: 0; }
-  .hero-actions .button, .hero-actions .hero-text-link { width: auto; min-height: 0; margin: 0; gap: 8px; white-space: nowrap; }
-  .hero-actions .hero-donate { height: 44px; padding: 0 16px; background: white; color: var(--ink); border: 1px solid rgba(255,255,255,.95); box-shadow: 0 6px 18px rgba(0,0,0,.18); }
-  .hero-actions .hero-training { height: auto; padding: 0 0 4px; background: transparent; color: white; border: 0; border-bottom: 1px solid rgba(255,255,255,.75); box-shadow: none; }
-  .hero-bottom { display: block; width: 100%; }
-  .hero-raised { display: block; padding: 9px 12px 10px; min-width: 108px; background: rgba(12,24,21,.48); }
-  .hero-raised strong { font-size: 1.35rem; }
-  .hero-raised span { margin-top: 4px; font-size: .52rem; letter-spacing: .1em; }
-  .hero-number { font-size: 4.5rem; }
-  .hero-caption { margin-top: 18px; font-size: .62rem; letter-spacing: .1em; }
-  .section { padding: 75px 7vw; }
-  .story-grid, .cause-card, .fundraising-grid, .race-grid { grid-template-columns: 1fr; gap: 40px; }
-  .cause-card { padding: 35px; }
-  .cause-card .text-link { margin-top: 24px; }
-  .training-head { flex-direction: column; align-items: flex-start; gap: 24px; }
-  .stats { grid-template-columns: 1fr; margin: 48px 0 35px; border-top: 1px solid rgba(255,255,255,.2); border-bottom: 0; }
-  .stat, .stat:not(:first-child) { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.2); padding: 20px 0; }
-  .stat strong { font-size: 3.1rem; line-height: .9; flex: 0 0 auto; }
-  .stat span { max-width: 48%; text-align: right; line-height: 1.35; }
-  .strava-placeholder { padding: 28px 24px; }
-  .strava-placeholder h3 { font-size: 1.75rem; }
-  footer { flex-direction: column; gap: 15px; }
-}
-
-/* Live race countdown */
-.countdown { display: flex; align-items: flex-start; gap: clamp(8px, 1.5vw, 22px); flex-wrap: wrap; max-width: 760px; }
-.countdown-unit { display: flex; flex-direction: column; min-width: 66px; }
-.countdown-number { display: block; font-family: "Playfair Display", serif; font-size: clamp(2.6rem, 5.4vw, 5.2rem); line-height: .85; letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
-.countdown-label { display: block; margin-top: 13px; font-size: .62rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,.82); }
-.countdown-separator { font-family: "Playfair Display", serif; font-size: clamp(2.3rem, 4.5vw, 4.3rem); line-height: .8; color: rgba(255,255,255,.68); }
-.countdown-caption { flex-basis: 100%; margin-top: 7px; }
-
-@media (max-width: 700px) {
-  .hero-bottom { display: flex; flex-direction: column; align-items: stretch; gap: 14px; }
-  .countdown { display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: space-between; gap: 0; width: 100%; max-width: 100%; }
-  .countdown-unit { flex: 1 1 25%; min-width: 0; align-items: flex-start; text-align: left; }
-  .countdown .hero-number, .countdown-number { font-size: clamp(1.55rem, 7.6vw, 2.5rem); line-height: 1; letter-spacing: -.04em; white-space: nowrap; }
+  .hero { padding-top: 16px; }
+  .nav-links { gap: 14px; }
+  .nav-link:not(.nav-donate) { display: none; }
+  .intro { font-size: 1.1rem; }
+  .hero-bottom { flex-direction: column; align-items: stretch; }
+  .countdown { flex-wrap: nowrap; justify-content: space-between; gap: 0; }
+  .countdown-unit { flex: 1 1 25%; min-width: 0; }
+  .countdown-number { font-size: clamp(1.8rem, 9vw, 2.6rem); }
   .countdown-separator { display: none; }
-  .countdown-label { margin-top: 9px; font-size: clamp(.42rem, 1.9vw, .55rem); letter-spacing: .04em; white-space: nowrap; }
-  .countdown-caption { flex: 0 0 auto; margin-top: 13px; font-size: .56rem; letter-spacing: .1em; white-space: nowrap; }
-  .hero-bottom .hero-raised { align-self: flex-end; margin-top: 0; }
-  .hero-actions { bottom: 205px; }
-}
-@media (max-width: 360px) {
-  .countdown .hero-number, .countdown-number { font-size: 1.45rem; }
-  .countdown-label { font-size: .4rem; letter-spacing: .025em; }
-  .hero-actions { bottom: 195px; }
+  .countdown-caption { display: none; }
+  .hero-raised { text-align: left; }
+  .story-grid, .cause-card, .fundraising-grid, .race-grid { grid-template-columns: 1fr; gap: 32px; }
+  .section-label { margin-bottom: 32px; }
+  .training-head { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .stats { grid-template-columns: 1fr; margin: 44px 0 32px; border-bottom: 0; }
+  .stat, .stat:not(:first-child) { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.22); }
+  .stat strong { font-size: 2.8rem; }
+  .stat span { max-width: 50%; text-align: right; line-height: 1.35; }
+  footer { flex-direction: column; }
 }
