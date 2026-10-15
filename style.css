@@ -85,8 +85,8 @@ nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-item
 .stat { padding: 32px 24px 32px 0; border-right: 1px solid rgba(255,255,255,.22); }
 .stat:not(:first-child) { padding-left: 24px; }
 .stat:last-child { border-right: 0; }
-.stat strong { display: block; font-size: clamp(2.5rem, 5vw, 4.6rem); line-height: 1; }
-.stat span { color: #b4c4c4; font-size: .9rem; }
+.stat strong { display: block; margin-bottom: 14px; font-size: clamp(2.5rem, 5vw, 4.6rem); line-height: 1.05; font-variant-numeric: lining-nums; }
+.stat > span { display: block; color: #b4c4c4; font-size: 1rem; line-height: 1.4; }
 .training-note { max-width: 720px; }
 .training-note p { color: #d6e0e0; }
 .training-note .eyebrow { color: #b4c4c4; }
@@ -117,7 +117,7 @@ footer a:hover { color: var(--gold); }
   .training-head { flex-direction: column; align-items: flex-start; gap: 24px; }
   .stats { grid-template-columns: 1fr; margin: 44px 0 32px; border-bottom: 0; }
   .stat, .stat:not(:first-child) { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.22); }
-  .stat strong { font-size: 2.8rem; }
+  .stat strong { font-size: 2.8rem; margin-bottom: 0; }
   .stat span { max-width: 50%; text-align: right; line-height: 1.35; }
   footer { flex-direction: column; }
 }
