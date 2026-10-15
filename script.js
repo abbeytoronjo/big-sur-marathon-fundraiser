@@ -12,7 +12,6 @@ fetch("fundraising-data.json", { cache: "no-store" })
     const raisedEl = document.getElementById("raised");
     const progressBar = document.getElementById("progress-bar");
 
-    renderDonors(Array.isArray(data.donors) ? data.donors : [], raised);
     if (raisedEl) raisedEl.textContent = `$${raised.toLocaleString()}`;
     if (progressBar) {
       progressBar.style.width = `${Math.min((raised / GOAL) * 100, 100)}%`;
@@ -20,7 +19,6 @@ fetch("fundraising-data.json", { cache: "no-store" })
   })
   .catch(error => {
     console.error("Could not load live fundraising data:", error);
-    renderDonors([], 0);
   });
 
 // Race countdown target: April 25, 2027
@@ -77,7 +75,7 @@ fetch("training-data.json")
   });
 
 // Donor acknowledgement: gold course + numbered bibs.
-// Expects fundraising-data.json like: { "raised": 1000, "donors": [{ "name": "Sarah M.", "amount": 100 }, ...] }  (oldest first)
+// Donor names come from donors.json (hand-edited, oldest first). The raised total comes from fundraising-data.json.
 function renderDonors(list, raised) {
   const track = document.getElementById("course-track");
   if (!track) return;
@@ -133,3 +131,15 @@ function renderDonors(list, raised) {
     document.getElementById("course-latest").textContent = `Latest: ${latest.reverse().join(", ")}`;
   }
 }
+
+// Load the hand-edited donor list and the live total, then draw the section.
+// If either file is missing or broken, the section falls back gracefully.
+Promise.allSettled([
+  fetch("fundraising-data.json", { cache: "no-store" }).then(r => r.json()),
+  fetch("donors.json", { cache: "no-store" }).then(r => r.json())
+]).then(([fund, donors]) => {
+  const list = donors.status === "fulfilled" && Array.isArray(donors.value) ? donors.value : [];
+  const listed = list.reduce((sum, d) => sum + (Number(d.amount) || 0), 0);
+  const live = fund.status === "fulfilled" ? Number(fund.value.raised) || 0 : 0;
+  renderDonors(list, Math.max(live, listed));
+});

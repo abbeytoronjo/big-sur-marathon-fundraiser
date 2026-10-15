@@ -9,7 +9,7 @@
   --serif: "Playfair Display", Georgia, serif;
   --sans: "DM Sans", system-ui, sans-serif;
   --pad: clamp(24px, 7vw, 120px);
-  --hero-pos: 50% 0%;   /* keeps your head in frame; tune if the crop shifts */
+  --hero-pos: 50% 25%;  /* 0% = top of photo, 50% = centered. Raise to show more feet, lower to show more head. */
   --hero-shade: linear-gradient(180deg, rgba(8,22,27,.45) 0%, rgba(8,22,27,.1) 35%, rgba(8,22,27,.78) 100%);
 }
 * { box-sizing: border-box; }
