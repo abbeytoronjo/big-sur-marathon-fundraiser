@@ -119,7 +119,6 @@ footer a { text-decoration: none; }
   footer { flex-direction: column; gap: 15px; }
 }
 
-
 /* Live race countdown */
 .countdown {
   display: flex;
@@ -156,13 +155,57 @@ footer a { text-decoration: none; }
   flex-basis: 100%;
   margin-top: 7px;
 }
+
+/* Keep the countdown tidy on phones: four equal columns, no wrapping punctuation. */
 @media (max-width: 700px) {
-  .countdown { gap: 7px; max-width: 100%; }
-  .countdown-unit { min-width: 0; }
-  .countdown .hero-number, .countdown-number { font-size: clamp(2rem, 9.3vw, 3.2rem); }
-  .countdown-label { margin-top: 10px; font-size: .48rem; letter-spacing: .08em; }
-  .countdown-separator { font-size: clamp(1.7rem, 7vw, 2.5rem); }
-  .countdown-caption { margin-top: 15px; font-size: .56rem; }
-  .hero-bottom { gap: 12px; }
-  .hero-raised { flex: 0 0 auto; }
+  .hero-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .countdown {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    gap: 0;
+    width: 100%;
+    max-width: none;
+  }
+  .countdown-unit {
+    min-width: 0;
+    align-items: center;
+    text-align: center;
+  }
+  .countdown .hero-number,
+  .countdown-number {
+    font-size: clamp(1.85rem, 9vw, 2.65rem);
+    line-height: .95;
+    letter-spacing: -.04em;
+    white-space: nowrap;
+  }
+  .countdown-separator { display: none; }
+  .countdown-label {
+    margin-top: 8px;
+    font-size: .46rem;
+    letter-spacing: .07em;
+    white-space: nowrap;
+  }
+  .countdown-caption {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+    text-align: left;
+    font-size: .56rem;
+  }
+  .hero-bottom .hero-raised {
+    align-self: flex-end;
+  }
+  .hero-actions { bottom: 205px; }
+}
+
+@media (max-width: 360px) {
+  .countdown .hero-number,
+  .countdown-number { font-size: 1.7rem; }
+  .countdown-label { font-size: .42rem; letter-spacing: .04em; }
+  .hero-actions { bottom: 195px; }
 }
