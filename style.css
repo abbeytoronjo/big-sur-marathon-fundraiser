@@ -118,3 +118,51 @@ footer a { text-decoration: none; }
   .strava-placeholder h3 { font-size: 1.75rem; }
   footer { flex-direction: column; gap: 15px; }
 }
+
+
+/* Live race countdown */
+.countdown {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(8px, 1.5vw, 22px);
+  flex-wrap: wrap;
+  max-width: 760px;
+}
+.countdown-unit { display: flex; flex-direction: column; min-width: 66px; }
+.countdown-number {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.6rem, 5.4vw, 5.2rem);
+  line-height: .85;
+  letter-spacing: -.045em;
+  font-variant-numeric: tabular-nums;
+}
+.countdown-label {
+  display: block;
+  margin-top: 13px;
+  font-size: .62rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255,255,255,.82);
+}
+.countdown-separator {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.3rem, 4.5vw, 4.3rem);
+  line-height: .8;
+  color: rgba(255,255,255,.68);
+}
+.countdown-caption {
+  flex-basis: 100%;
+  margin-top: 7px;
+}
+@media (max-width: 700px) {
+  .countdown { gap: 7px; max-width: 100%; }
+  .countdown-unit { min-width: 0; }
+  .countdown .hero-number, .countdown-number { font-size: clamp(2rem, 9.3vw, 3.2rem); }
+  .countdown-label { margin-top: 10px; font-size: .48rem; letter-spacing: .08em; }
+  .countdown-separator { font-size: clamp(1.7rem, 7vw, 2.5rem); }
+  .countdown-caption { margin-top: 15px; font-size: .56rem; }
+  .hero-bottom { gap: 12px; }
+  .hero-raised { flex: 0 0 auto; }
+}
