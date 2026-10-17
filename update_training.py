@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 
 FEED_URL = "https://runalyze.com/athlete/abbeyruns/feed"
-START_DATE = "2026-08-01"
+START_DATE = "2026-10-01"
 DATA_FILE = "training-data.json"
 HISTORY_FILE = "training-history.json"
 
@@ -16,6 +16,38 @@ def activity_key(activity):
         [activity["date"], round(float(activity["distance"]), 2)],
         separators=(",", ":"),
     )
+
+
+def rebase_history(history):
+    """When START_DATE moves, recompute the baseline from the per-run records
+    already stored, keeping only runs on or after the new start date."""
+    if history.get("start_date") == START_DATE:
+        return history
+
+    keys = history.get("seen_keys", [])
+    expected = int(history["baseline_runs"]) + len(history.get("added_activities", []))
+    if len(keys) < expected:
+        raise RuntimeError(
+            f"Cannot rebase to {START_DATE}: history has {len(keys)} per-run records "
+            f"but {expected} runs are counted. Nothing was changed."
+        )
+
+    kept = []
+    for key in keys:
+        date, distance = json.loads(key)
+        if date >= START_DATE:
+            kept.append((date, float(distance)))
+
+    history["start_date"] = START_DATE
+    history["baseline_miles"] = round(sum(d for _, d in kept), 2)
+    history["baseline_runs"] = len(kept)
+    history["added_activities"] = []
+    history["seen_keys"] = [activity_key({"date": d, "distance": m}) for d, m in kept]
+    print(
+        f"Rebased history to {START_DATE}: {len(kept)} runs, "
+        f"{history['baseline_miles']:.2f} miles"
+    )
+    return history
 
 
 # Download the public RUNALYZE RSS feed.
@@ -123,6 +155,8 @@ except FileNotFoundError:
         "added_activities": [],
         "baseline_latest_run": baseline_latest,
     }
+
+history = rebase_history(history)
 
 seen_keys = set(history.get("seen_keys", []))
 added_activities = list(history.get("added_activities", []))
