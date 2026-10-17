@@ -2,8 +2,11 @@ name: Update Training Data
 
 on:
   schedule:
-    # Run every day at 9:00 AM Central, adjusting automatically for daylight saving time
-    - cron: "0 9 * * *"
+    # 9:43 AM Central (adjusts for daylight saving), plus a backup run at 11:43 AM.
+    # Avoiding the top of the hour: GitHub is busiest then and often delays or skips runs.
+    - cron: "43 9 * * *"
+      timezone: "America/Chicago"
+    - cron: "43 11 * * *"
       timezone: "America/Chicago"
   workflow_dispatch:
 
@@ -34,4 +37,7 @@ jobs:
           git diff --cached --quiet || git commit -m "Update cumulative training data"
 
       - name: Push changes
-        run: git push
+        run: |
+          git pull --rebase origin main
+          git push
+
