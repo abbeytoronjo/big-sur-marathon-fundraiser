@@ -210,3 +210,4 @@ print(
     f"({len(added_activities)} activities added after the baseline)"
 )
 print(json.dumps(data, indent=2))
+
