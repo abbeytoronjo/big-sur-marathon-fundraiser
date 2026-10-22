@@ -102,12 +102,13 @@ function renderDonors(list, raised, autoCount = 0) {
     const p = track.getPointAtLength(L * clamp(cum / GOAL));
     const isLatest = i >= list.length - 2;
     if (isLatest) {
-      latest.push(`#${i + 1} ${name}`);
-      const up = i % 2 === 0, w = 104, sy = up ? p.y - 52 : p.y + 26;
+      const label = `#${i + 1} ${name}`;
+      latest.push(label);
+      const up = i % 2 === 0, w = Math.min(230, Math.max(104, label.length * 7.4 + 20)), sy = up ? p.y - 52 : p.y + 26;
       const sx = Math.max(4, Math.min(676 - w, p.x - w / 2));
       marks.appendChild(mk("line", { class: "course-stem", x1: p.x, y1: p.y, x2: p.x, y2: up ? sy + 24 : sy }));
       marks.appendChild(mk("rect", { class: "course-sign", x: sx, y: sy, width: w, height: 24, rx: 4 }));
-      marks.appendChild(mk("text", { class: "course-text", x: sx + w / 2, y: sy + 16, "text-anchor": "middle" }, `#${i + 1} ${name}`.slice(0, 16)));
+      marks.appendChild(mk("text", { class: "course-text", x: sx + w / 2, y: sy + 16, "text-anchor": "middle" }, label.length > 30 ? label.slice(0, 29) + "…" : label));
     }
     marks.appendChild(mk("circle", { class: "course-dot", cx: p.x, cy: p.y, r: isLatest ? 6 : 4.5 }));
     const bib = document.createElement("div");
