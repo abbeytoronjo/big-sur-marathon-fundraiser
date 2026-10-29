@@ -1,11 +1,11 @@
 {
   "start_date": "2026-10-01",
-  "miles": 51.08,
-  "runs": 11,
+  "miles": 56.1,
+  "runs": 12,
   "latest_run": {
-    "date": "2026-10-26",
-    "title": "Running (Easy run): 00:39:36h - 8,07 km",
-    "distance": 5.01
+    "date": "2026-10-29",
+    "title": "Running (Easy run): 00:40:12h - 8,08 km - College Station Running",
+    "distance": 5.02
   },
-  "updated": "2026-10-28T21:19:17.619684Z"
+  "updated": "2026-10-29T19:52:18.107119Z"
 }
