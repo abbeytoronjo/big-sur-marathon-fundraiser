@@ -14,7 +14,11 @@
     "[\"2026-10-22\",5.03]",
     "[\"2026-10-23\",6.26]",
     "[\"2026-10-26\",5.01]",
-    "[\"2026-10-29\",5.02]"
+    "[\"2026-10-27\",4.02]",
+    "[\"2026-10-28\",3.09]",
+    "[\"2026-10-29\",5.02]",
+    "[\"2026-10-30\",5.03]",
+    "[\"2026-10-31\",6.02]"
   ],
   "added_activities": [
     {
@@ -46,6 +50,26 @@
       "date": "2026-10-29",
       "title": "Running (Easy run): 00:40:12h - 8,08 km - College Station Running",
       "distance": 5.02
+    },
+    {
+      "date": "2026-10-31",
+      "title": "Running (Easy run): 00:45:24h - 9,69 km",
+      "distance": 6.02
+    },
+    {
+      "date": "2026-10-30",
+      "title": "Running (Easy run): 00:37:48h - 8,09 km",
+      "distance": 5.03
+    },
+    {
+      "date": "2026-10-28",
+      "title": "Running (Easy run): 00:23:55h - 4,98 km",
+      "distance": 3.09
+    },
+    {
+      "date": "2026-10-27",
+      "title": "Running (Easy run): 00:30:42h - 6,47 km",
+      "distance": 4.02
     }
   ],
   "baseline_latest_run": {
@@ -55,5 +79,5 @@
   },
   "baseline_source": "RUNALYZE full activity CSV export",
   "baseline_through": "2026-10-14",
-  "updated": "2026-10-31T20:17:32.760968Z"
+  "updated": "2026-11-01T19:54:02.528108Z"
 }
