@@ -1,11 +1,11 @@
 {
   "start_date": "2026-10-01",
-  "miles": 96.43,
-  "runs": 21,
+  "miles": 103.45,
+  "runs": 22,
   "latest_run": {
-    "date": "2026-11-05",
-    "title": "Running (Easy run): 00:31:57h - 6,57 km",
-    "distance": 4.08
+    "date": "2026-11-07",
+    "title": "Running (Easy run): 00:53:23h - 11,29 km",
+    "distance": 7.02
   },
-  "updated": "2026-11-07T21:05:01.510593Z"
+  "updated": "2026-11-08T19:57:26.106112Z"
 }
