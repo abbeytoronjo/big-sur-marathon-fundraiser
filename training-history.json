@@ -28,7 +28,8 @@
     "[\"2026-11-09\",5.26]",
     "[\"2026-11-11\",5.14]",
     "[\"2026-11-12\",5.03]",
-    "[\"2026-11-13\",3.09]"
+    "[\"2026-11-13\",3.09]",
+    "[\"2026-11-14\",5.16]"
   ],
   "added_activities": [
     {
@@ -130,6 +131,11 @@
       "date": "2026-11-13",
       "title": "Running (Easy run): 00:24:18h - 4,97 km",
       "distance": 3.09
+    },
+    {
+      "date": "2026-11-14",
+      "title": "Running (Easy run): 00:39:49h - 8,31 km",
+      "distance": 5.16
     }
   ],
   "baseline_latest_run": {
@@ -139,5 +145,5 @@
   },
   "baseline_source": "RUNALYZE full activity CSV export",
   "baseline_through": "2026-10-14",
-  "updated": "2026-11-13T22:51:38.356944Z"
+  "updated": "2026-11-14T20:04:50.363141Z"
 }
